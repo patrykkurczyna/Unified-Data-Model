@@ -7,58 +7,49 @@ namespace UDM
 {
     class Table
     {
-        protected List<Column> columns;
+        protected List<Column<Object>> columns;
         protected string _name;
+        protected Table previous;
         public string Name
         {
             get { return _name; }
-            set { _name = value; }
         }
 
-        public List<Column> Columns
+        public List<Column<Object>> Columns
         {
             get { return columns; }
             set { columns = value; }
         }
 
-        public Table(String _name, List<Column> columns)
+        public Table(String _name, List<Column<Object>> columns, Table previous = null)
         {
             this._name = _name;
             this.columns = columns;
+            this.previous = previous;
         }
 
-        public void AddColumn(Column column)
+        public void AddColumn(Column<Object> column)
         {
             this.columns.Add(column);
         }
 
-        public bool RemoveColumn(Column column)
+        public bool RemoveColumn(Column<Object> column)
         {
             return columns.Remove(column);
         }
 
-        public Table Select(List<Column> selectedColumns)
-        {   
-            return new Table(this._name, this.columns.FindAll(delegate(Column column)
-            {
-                return (selectedColumns.IndexOf(column) != -1);
-            }));
+        public Table Execute(Command command)
+        {
+            return command.Execute(this);
         }
 
-        public Table Join(Table table)
+        public Table Undo()
         {
-            //TODO
-            return new Table("todo", new List<Column>(););
+            return previous;
         }
-        public Table Group(Table table)
+        public Table Normalize()
         {
-            //TODO
-            return new Table("todo", new List<Column>(););
-        }
-        public Table Filter(Table table)
-        {
-            //TODO
-            return new Table("todo", new List<Column>(););
+            return null;
         }
     }
 }

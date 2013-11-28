@@ -5,40 +5,42 @@ using System.Text;
 
 namespace UDM
 {
-    class Column
+    class Column<T>
     {
-        protected List<Cell> cells;
+        protected List<Cell<T>> cells;
         protected string _name;
+        protected DataType _type;
+        public DataType Type
+        {
+            get { return _type; }
+        }
         public string Name
         {
             get { return _name; }
             set { _name = value; }
         }
 
-        public List<Cell> Cells
+        public List<Cell<T>> Cells
         {
             get { return cells; }
             set { cells = value; }
         }
 
-        public Column(string name, List<Cell> cells)
+        public Column(string name, List<Cell<T>> cells, DataType type)
         {
             this._name = name;
             this.cells = cells;
+            this._type = type;
         }
 
-        public void AddCell(Cell cell)
+        public void AddCell(Cell<T> cell)
         {
             this.cells.Add(cell);
         }
 
-        public bool RemoveCell(Cell cell)
+        public bool RemoveCell(Cell<T> cell)
         {
             return cells.Remove(cell);
-        }
-        public void Normalize()
-        {
-            // TODO
         }
     }
 }

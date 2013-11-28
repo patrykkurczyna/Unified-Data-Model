@@ -5,11 +5,8 @@ using System.Text;
 
 namespace UDM
 {
-    class Program
+    abstract class Command
     {
-        static void Main(string[] args)
-        {
-
-        }
+        public abstract Table Execute(Table table);
     }
 }

@@ -5,11 +5,10 @@ using System.Text;
 
 namespace UDM
 {
-    class Program
+    class GroupCommand : Command
     {
-        static void Main(string[] args)
+        public Table Execute(Table table)
         {
-
         }
     }
 }
