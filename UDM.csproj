@@ -45,8 +45,6 @@
   <ItemGroup>
     <Compile Include="Cell.cs" />
     <Compile Include="DataType.cs" />
-    <Compile Include="DimensionCell.cs" />
-    <Compile Include="FactCell.cs" />
     <Compile Include="GroupCommand.cs" />
     <Compile Include="FilterCommand.cs" />
     <Compile Include="Command.cs" />

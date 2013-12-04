@@ -18,7 +18,7 @@ namespace UDM
             this.selectedIndices = selectedIndeces;
         }
 
-        public Table Execute(Table table)
+        public override Table Execute(Table table)
         {
             List<Column<Object>> columns;
             if (selectedIndices == null)

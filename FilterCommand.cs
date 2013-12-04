@@ -17,7 +17,7 @@ namespace UDM
                 if (!del.Invoke(cell)) invalidRows.Add(column.Cells.IndexOf(cell));
             }
         }
-        public Table Execute(Table table)
+        public override Table Execute(Table table)
         {
             Table newTable = new Table(table.Name, null, table);
             foreach (Column<Object> column in table.Columns)

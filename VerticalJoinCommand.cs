@@ -20,7 +20,7 @@ namespace UDM
             secondTable = table;
         }
 
-        public Table Execute(Table firstTable)
+        public override Table Execute(Table firstTable)
         {
             Table newTable = new Table(firstTable.Name, new List<Column<Object>>(), firstTable);
             if (firstTable.Columns.Count != secondTable.Columns.Count) throw new IncoherentColumnCountException();

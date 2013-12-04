@@ -7,8 +7,9 @@ namespace UDM
 {
     class GroupCommand : Command
     {
-        public Table Execute(Table table)
+        public override Table Execute(Table table)
         {
+            return new Table("jan",new List<Column<object>>());
         }
     }
 }
