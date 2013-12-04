@@ -14,11 +14,11 @@ namespace UDM
         }
         public override Table Execute(Table firstTable)
         {
-            Table newTable = new Table(firstTable.Name,new List<Column<Object>>(firstTable.Columns),firstTable);
-            foreach (Column<Object> column in secondTable.Columns)
+            Table newTable = new Table(firstTable.Name,new List<AbstractColumn>(firstTable.Columns),firstTable);
+            foreach (AbstractColumn column in secondTable.Columns)
             {
                 bool found = false;
-                foreach (Column<Object> columnInFirst in firstTable.Columns)
+                foreach (AbstractColumn columnInFirst in firstTable.Columns)
                 {
                     if (column.Name == columnInFirst.Name)
                         found = true;

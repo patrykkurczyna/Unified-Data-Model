@@ -9,7 +9,7 @@ namespace UDM
     {
         public override Table Execute(Table table)
         {
-            return new Table("jan",new List<Column<object>>());
+            return new Table("jan",new List<AbstractColumn>());
         }
     }
 }

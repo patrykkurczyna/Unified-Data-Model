@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UDM
 {
-    class Cell<T>
+    class Cell<T> :AbstractCell
     {   
         // TODO - how to store data type and how to do generic types for cell content ?
         protected T _content;
@@ -19,6 +19,11 @@ namespace UDM
         public Cell(T content)
         {
             this._content = content;
+        }
+
+        public override String ToString()
+        {
+            return _content.ToString();
         }
     }
 }

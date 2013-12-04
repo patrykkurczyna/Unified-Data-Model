@@ -9,7 +9,7 @@ namespace UDM
     {
         public delegate bool Del(Cell<Object> cell);
         List<int> invalidRows;
-        public FilterCommand(Column<Object> column,Del del)
+        public FilterCommand(AbstractColumn column, Del del)
         {
             invalidRows = new List<int>();
             foreach (Cell<Object> cell in column.Cells)
@@ -20,9 +20,9 @@ namespace UDM
         public override Table Execute(Table table)
         {
             Table newTable = new Table(table.Name, null, table);
-            foreach (Column<Object> column in table.Columns)
+            foreach (AbstractColumn column in table.Columns)
             {
-                Column<Object> newColumn = new Column<Object>(column.Name, new List<Cell<Object>>(column.Cells), column.Type);
+                AbstractColumn newColumn = new AbstractColumn(column.Name, new List<Cell<Object>>(column.Cells), column.Type);
                 foreach (int index in invalidRows)
                 {
                     newColumn.Cells.RemoveAt(index);

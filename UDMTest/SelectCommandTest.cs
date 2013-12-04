@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using NMock2;
 
 namespace UDMTest
 {
@@ -66,41 +67,29 @@ namespace UDMTest
 
 
         /// <summary>
-        ///A test for SelectCommand Constructor
-        ///</summary>
-        [TestMethod()]
-        public void SelectCommandConstructorTest()
-        {
-            List<int> selectedIndeces = null; // TODO: Initialize to an appropriate value
-            SelectCommand target = new SelectCommand(selectedIndeces);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
-        /// <summary>
-        ///A test for SelectCommand Constructor
-        ///</summary>
-        [TestMethod()]
-        public void SelectCommandConstructorTest1()
-        {
-            List<Column<object>> selectedColumns = null; // TODO: Initialize to an appropriate value
-            SelectCommand target = new SelectCommand(selectedColumns);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
-        /// <summary>
         ///A test for Execute
         ///</summary>
         [TestMethod()]
-        public void ExecuteTest()
+        public void ExecuteNullTest()
         {
-            List<Column<object>> selectedColumns = null; // TODO: Initialize to an appropriate value
+            List<Column<object>> selectedColumns = null; 
             SelectCommand target = new SelectCommand(selectedColumns); // TODO: Initialize to an appropriate value
             Table table = null; // TODO: Initialize to an appropriate value
             Table expected = null; // TODO: Initialize to an appropriate value
             Table actual;
             actual = target.Execute(table);
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for SelectCommand Constructor
+        ///</summary>
+        [TestMethod()]
+        public void SelectCommandConstructorTest()
+        {
+            List<Column<object>> selectedColumns = null; // TODO: Initialize to an appropriate value
+            SelectCommand target = new SelectCommand(selectedColumns);
+            Assert.Inconclusive("TODO: Implement code to verify target");
         }
     }
 }
