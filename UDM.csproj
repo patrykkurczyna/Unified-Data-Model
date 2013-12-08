@@ -52,7 +52,6 @@
     <Compile Include="FilterCommand.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="Column.cs" />
-    <Compile Include="HorizontalJoinCommand.cs" />
     <Compile Include="MaxAggregation.cs" />
     <Compile Include="MinAggregation.cs" />
     <Compile Include="Program.cs" />
