@@ -5,11 +5,11 @@ using System.Text;
 
 namespace UDM
 {
-    class SelectCommand : Command
+    public class SelectCommand : Command
     {
-        protected List<Column<Object>> selectedColumns;
+        protected List<Column> selectedColumns;
         protected List<int> selectedIndices;
-        public SelectCommand(List<Column<Object>> selectedColumns)
+        public SelectCommand(List<Column> selectedColumns)
         {
             this.selectedColumns = selectedColumns;
         }
@@ -20,25 +20,17 @@ namespace UDM
 
         public override Table Execute(Table table)
         {
-            List<Column<Object>> columns;
-            if (selectedIndices == null)
+            if (selectedIndices != null)
             {
-                columns = selectedColumns;
-            }
-            else
-            {
-                columns = new List<Column<Object>>();
+                selectedColumns = new List<Column>();
                 foreach (int index in selectedIndices)
                 {
-                    columns.Add(table.Columns[index]);
+                    selectedColumns.Add(table.Columns[index]);
                 }
 
             }
 
-            return new Table(table.Name, table.Columns.FindAll(delegate(Column<Object> column)
-                {
-                    return (selectedColumns.IndexOf(column) != -1);
-                }), table);
+            return new Table(table.Name,null,selectedColumns);
 
 
         }

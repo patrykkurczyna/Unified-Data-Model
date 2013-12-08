@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UDM
 {
-    abstract class Command
+    public abstract class Command
     {
         public abstract Table Execute(Table table);
     }

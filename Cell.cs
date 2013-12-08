@@ -5,20 +5,26 @@ using System.Text;
 
 namespace UDM
 {
-    class Cell<T>
+    public class Cell
     {   
         // TODO - how to store data type and how to do generic types for cell content ?
-        protected T _content;
+        protected Object _content;
 
-        public T Content
+        public Object Content
         {
             get { return _content; }
             set { _content = value; }
         }
 
-        public Cell(T content)
+
+        public Cell(Object content)
         {
             this._content = content;
+        }
+
+        public override String ToString()
+        {
+            return _content.ToString();
         }
     }
 }

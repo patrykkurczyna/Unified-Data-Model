@@ -5,9 +5,9 @@ using System.Text;
 
 namespace UDM
 {
-    class Table
+    public class Table
     {
-        protected List<Column<Object>> columns;
+        protected List<Column> columns;
         protected string _name;
         protected Table previous;
         public string Name
@@ -15,27 +15,39 @@ namespace UDM
             get { return _name; }
         }
 
-        public List<Column<Object>> Columns
+        public List<Column> Columns
         {
             get { return columns; }
             set { columns = value; }
         }
 
-        public Table(String _name, List<Column<Object>> columns, Table previous = null)
+        public Table(String _name, Table previous, List<Column> columns = null)
         {
             this._name = _name;
-            this.columns = columns;
+            if (columns == null) this.columns = new List<Column>();
+            else this.columns = columns;
             this.previous = previous;
         }
 
-        public void AddColumn(Column<Object> column)
+        public void AddColumn(Column column)
         {
             this.columns.Add(column);
         }
 
-        public bool RemoveColumn(Column<Object> column)
+        public bool RemoveColumn(Column column)
         {
             return columns.Remove(column);
+        }
+
+        public override String ToString()
+        {
+            String table = this.Name + "\n";
+            foreach (Column column in this.columns)
+            {
+                table += column.ToString();
+                table += "\n";
+            }
+            return table;
         }
 
         public Table Execute(Command command)

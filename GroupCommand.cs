@@ -5,11 +5,15 @@ using System.Text;
 
 namespace UDM
 {
-    class GroupCommand : Command
+    public class GroupCommand : Command
     {
+        public GroupCommand(List<Column> groupingColumns, Dictionary<Column,Aggregation> aggregatedColumns)
+        {
+
+        }
         public override Table Execute(Table table)
         {
-            return new Table("jan",new List<Column<object>>());
+            return new Table("jan",null, new List<Column>());
         }
     }
 }

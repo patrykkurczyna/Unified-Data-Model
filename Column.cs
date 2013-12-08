@@ -5,9 +5,9 @@ using System.Text;
 
 namespace UDM
 {
-    class Column<T>
+    public class Column
     {
-        protected List<Cell<T>> cells;
+        protected List<Cell> cells;
         protected string _name;
         protected DataType _type;
         public DataType Type
@@ -20,27 +20,40 @@ namespace UDM
             set { _name = value; }
         }
 
-        public List<Cell<T>> Cells
+        public List<Cell> Cells
         {
             get { return cells; }
             set { cells = value; }
         }
 
-        public Column(string name, List<Cell<T>> cells, DataType type)
+        public Column(string name, DataType type, List<Cell> cells = null)
         {
             this._name = name;
-            this.cells = cells;
+            if (cells == null) this.cells = new List<Cell>();
+            else this.cells = cells;
             this._type = type;
         }
 
-        public void AddCell(Cell<T> cell)
+        public void AddCell(Cell cell)
         {
             this.cells.Add(cell);
         }
 
-        public bool RemoveCell(Cell<T> cell)
+        public bool RemoveCell(Cell cell)
         {
             return cells.Remove(cell);
+        }
+
+        public override String ToString()
+        {
+            String result = this.Name;
+            result += "\n";
+            foreach (Cell cell in this.cells)
+            {
+                result += cell.ToString();
+                result += " ";
+            }
+            return result;
         }
     }
 }
