@@ -2,16 +2,16 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace UDMTest
+namespace TestUDM
 {
     
     
     /// <summary>
-    ///This is a test class for ProgramTest and is intended
-    ///to contain all ProgramTest Unit Tests
+    ///This is a test class for AggregationTest and is intended
+    ///to contain all AggregationTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class ProgramTest
+    public class AggregationTest
     {
 
 
@@ -64,26 +64,25 @@ namespace UDMTest
         #endregion
 
 
-        /// <summary>
-        ///A test for Program Constructor
-        ///</summary>
-        [TestMethod()]
-        public void ProgramConstructorTest()
+        internal virtual Aggregation CreateAggregation()
         {
-            Program target = new Program();
-            Assert.Inconclusive("TODO: Implement code to verify target");
+            // TODO: Instantiate an appropriate concrete class.
+            Aggregation target = null;
+            return target;
         }
 
         /// <summary>
-        ///A test for Main
+        ///A test for GetAggregatedValue
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("UDM.exe")]
-        public void MainTest()
+        public void GetAggregatedValueTest()
         {
-            string[] args = null; // TODO: Initialize to an appropriate value
-            Program_Accessor.Main(args);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+            Aggregation target = CreateAggregation(); // TODO: Initialize to an appropriate value
+            object expected = null; // TODO: Initialize to an appropriate value
+            object actual;
+            actual = target.GetAggregatedValue();
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }

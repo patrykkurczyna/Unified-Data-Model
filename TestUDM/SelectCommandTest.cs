@@ -1,17 +1,18 @@
 ﻿using UDM;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
-namespace UDMTest
+namespace TestUDM
 {
     
     
     /// <summary>
-    ///This is a test class for VerticalJoinCommand_ColumnTypeMismatchExceptionTest and is intended
-    ///to contain all VerticalJoinCommand_ColumnTypeMismatchExceptionTest Unit Tests
+    ///This is a test class for SelectCommandTest and is intended
+    ///to contain all SelectCommandTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class VerticalJoinCommand_ColumnTypeMismatchExceptionTest
+    public class SelectCommandTest
     {
 
 
@@ -65,13 +66,41 @@ namespace UDMTest
 
 
         /// <summary>
-        ///A test for ColumnTypeMismatchException Constructor
+        ///A test for SelectCommand Constructor
         ///</summary>
         [TestMethod()]
-        public void VerticalJoinCommand_ColumnTypeMismatchExceptionConstructorTest()
+        public void SelectCommandConstructorTest()
         {
-            VerticalJoinCommand.ColumnTypeMismatchException target = new VerticalJoinCommand.ColumnTypeMismatchException();
+            List<int> selectedIndeces = null; // TODO: Initialize to an appropriate value
+            SelectCommand target = new SelectCommand(selectedIndeces);
             Assert.Inconclusive("TODO: Implement code to verify target");
+        }
+
+        /// <summary>
+        ///A test for SelectCommand Constructor
+        ///</summary>
+        [TestMethod()]
+        public void SelectCommandConstructorTest1()
+        {
+            List<Column> selectedColumns = null; // TODO: Initialize to an appropriate value
+            SelectCommand target = new SelectCommand(selectedColumns);
+            Assert.Inconclusive("TODO: Implement code to verify target");
+        }
+
+        /// <summary>
+        ///A test for Execute
+        ///</summary>
+        [TestMethod()]
+        public void ExecuteTest()
+        {
+            List<Column> selectedColumns = null; // TODO: Initialize to an appropriate value
+            SelectCommand target = new SelectCommand(selectedColumns); // TODO: Initialize to an appropriate value
+            Table table = null; // TODO: Initialize to an appropriate value
+            Table expected = null; // TODO: Initialize to an appropriate value
+            Table actual;
+            actual = target.Execute(table);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }

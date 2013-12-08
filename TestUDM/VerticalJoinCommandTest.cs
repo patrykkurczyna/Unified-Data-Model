@@ -2,16 +2,16 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace UDMTest
+namespace TestUDM
 {
     
     
     /// <summary>
-    ///This is a test class for GroupCommandTest and is intended
-    ///to contain all GroupCommandTest Unit Tests
+    ///This is a test class for VerticalJoinCommandTest and is intended
+    ///to contain all VerticalJoinCommandTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class GroupCommandTest
+    public class VerticalJoinCommandTest
     {
 
 
@@ -65,12 +65,13 @@ namespace UDMTest
 
 
         /// <summary>
-        ///A test for GroupCommand Constructor
+        ///A test for VerticalJoinCommand Constructor
         ///</summary>
         [TestMethod()]
-        public void GroupCommandConstructorTest()
+        public void VerticalJoinCommandConstructorTest()
         {
-            GroupCommand target = new GroupCommand();
+            Table table = null; // TODO: Initialize to an appropriate value
+            VerticalJoinCommand target = new VerticalJoinCommand(table);
             Assert.Inconclusive("TODO: Implement code to verify target");
         }
 
@@ -80,11 +81,12 @@ namespace UDMTest
         [TestMethod()]
         public void ExecuteTest()
         {
-            GroupCommand target = new GroupCommand(); // TODO: Initialize to an appropriate value
             Table table = null; // TODO: Initialize to an appropriate value
+            VerticalJoinCommand target = new VerticalJoinCommand(table); // TODO: Initialize to an appropriate value
+            Table firstTable = null; // TODO: Initialize to an appropriate value
             Table expected = null; // TODO: Initialize to an appropriate value
             Table actual;
-            actual = target.Execute(table);
+            actual = target.Execute(firstTable);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

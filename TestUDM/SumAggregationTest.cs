@@ -1,17 +1,18 @@
 ﻿using UDM;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
-namespace UDMTest
+namespace TestUDM
 {
     
     
     /// <summary>
-    ///This is a test class for FilterCommandTest and is intended
-    ///to contain all FilterCommandTest Unit Tests
+    ///This is a test class for SumAggregationTest and is intended
+    ///to contain all SumAggregationTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class FilterCommandTest
+    public class SumAggregationTest
     {
 
 
@@ -65,18 +66,27 @@ namespace UDMTest
 
 
         /// <summary>
-        ///A test for Execute
+        ///A test for SumAggregation Constructor
         ///</summary>
         [TestMethod()]
-        public void ExecuteTest()
+        public void SumAggregationConstructorTest()
         {
-            Column<object> column = null; // TODO: Initialize to an appropriate value
-            FilterCommand.Del del = null; // TODO: Initialize to an appropriate value
-            FilterCommand target = new FilterCommand(column, del); // TODO: Initialize to an appropriate value
-            Table table = null; // TODO: Initialize to an appropriate value
-            Table expected = null; // TODO: Initialize to an appropriate value
-            Table actual;
-            actual = target.Execute(table);
+            List<Cell> cells = null; // TODO: Initialize to an appropriate value
+            SumAggregation target = new SumAggregation(cells);
+            Assert.Inconclusive("TODO: Implement code to verify target");
+        }
+
+        /// <summary>
+        ///A test for GetAggregatedValue
+        ///</summary>
+        [TestMethod()]
+        public void GetAggregatedValueTest()
+        {
+            List<Cell> cells = null; // TODO: Initialize to an appropriate value
+            SumAggregation target = new SumAggregation(cells); // TODO: Initialize to an appropriate value
+            object expected = null; // TODO: Initialize to an appropriate value
+            object actual;
+            actual = target.GetAggregatedValue();
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

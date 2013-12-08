@@ -8,7 +8,7 @@ namespace UDM
     public class GroupCommand : Command
     {
         protected List<Column> groupingColumns;
-        protected Dictionary<Column,Aggregation> aggregatedColumns);
+        protected Dictionary<Column,Aggregation> aggregatedColumns;
 
         public class AllColumnsShouldBeSelectedForGroupingException : Exception
         {

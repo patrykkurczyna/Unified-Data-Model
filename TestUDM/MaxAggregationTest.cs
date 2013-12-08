@@ -1,17 +1,18 @@
 ﻿using UDM;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
-namespace UDMTest
+namespace TestUDM
 {
     
     
     /// <summary>
-    ///This is a test class for VerticalJoinCommand_IncoherentColumnCountExceptionTest and is intended
-    ///to contain all VerticalJoinCommand_IncoherentColumnCountExceptionTest Unit Tests
+    ///This is a test class for MaxAggregationTest and is intended
+    ///to contain all MaxAggregationTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class VerticalJoinCommand_IncoherentColumnCountExceptionTest
+    public class MaxAggregationTest
     {
 
 
@@ -65,13 +66,29 @@ namespace UDMTest
 
 
         /// <summary>
-        ///A test for IncoherentColumnCountException Constructor
+        ///A test for MaxAggregation Constructor
         ///</summary>
         [TestMethod()]
-        public void VerticalJoinCommand_IncoherentColumnCountExceptionConstructorTest()
+        public void MaxAggregationConstructorTest()
         {
-            VerticalJoinCommand.IncoherentColumnCountException target = new VerticalJoinCommand.IncoherentColumnCountException();
+            List<Cell> cells = null; // TODO: Initialize to an appropriate value
+            MaxAggregation target = new MaxAggregation(cells);
             Assert.Inconclusive("TODO: Implement code to verify target");
+        }
+
+        /// <summary>
+        ///A test for GetAggregatedValue
+        ///</summary>
+        [TestMethod()]
+        public void GetAggregatedValueTest()
+        {
+            List<Cell> cells = null; // TODO: Initialize to an appropriate value
+            MaxAggregation target = new MaxAggregation(cells); // TODO: Initialize to an appropriate value
+            object expected = null; // TODO: Initialize to an appropriate value
+            object actual;
+            actual = target.GetAggregatedValue();
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }

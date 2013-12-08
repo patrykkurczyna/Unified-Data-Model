@@ -6,11 +6,11 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FD506758-30B5-4347-A078-40898FEC00BD}</ProjectGuid>
+    <ProjectGuid>{B09B5556-2576-446F-A34F-AD76AF6FC6B1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UDMTest</RootNamespace>
-    <AssemblyName>UDMTest</AssemblyName>
+    <RootNamespace>TestUDM</RootNamespace>
+    <AssemblyName>TestUDM</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,15 +50,20 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AggregationTest.cs" />
+    <Compile Include="AverageAggregationTest.cs" />
     <Compile Include="CellTest.cs" />
     <Compile Include="ColumnTest.cs" />
     <Compile Include="CommandTest.cs" />
+    <Compile Include="CountAggregationTest.cs" />
     <Compile Include="FilterCommandTest.cs" />
     <Compile Include="GroupCommandTest.cs" />
-    <Compile Include="HorizontalJoinCommandTest.cs" />
+    <Compile Include="MaxAggregationTest.cs" />
+    <Compile Include="MinAggregationTest.cs" />
     <Compile Include="ProgramTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelectCommandTest.cs" />
+    <Compile Include="SumAggregationTest.cs" />
     <Compile Include="TableTest.cs" />
     <Compile Include="VerticalJoinCommandTest.cs" />
     <Compile Include="VerticalJoinCommand_ColumnTypeMismatchExceptionTest.cs" />

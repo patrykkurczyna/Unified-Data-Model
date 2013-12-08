@@ -2,16 +2,16 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace UDMTest
+namespace TestUDM
 {
     
     
     /// <summary>
-    ///This is a test class for VerticalJoinCommandTest and is intended
-    ///to contain all VerticalJoinCommandTest Unit Tests
+    ///This is a test class for VerticalJoinCommand_IncoherentColumnCountExceptionTest and is intended
+    ///to contain all VerticalJoinCommand_IncoherentColumnCountExceptionTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class VerticalJoinCommandTest
+    public class VerticalJoinCommand_IncoherentColumnCountExceptionTest
     {
 
 
@@ -65,30 +65,13 @@ namespace UDMTest
 
 
         /// <summary>
-        ///A test for VerticalJoinCommand Constructor
+        ///A test for IncoherentColumnCountException Constructor
         ///</summary>
         [TestMethod()]
-        public void VerticalJoinCommandConstructorTest()
+        public void VerticalJoinCommand_IncoherentColumnCountExceptionConstructorTest()
         {
-            Table table = null; // TODO: Initialize to an appropriate value
-            VerticalJoinCommand target = new VerticalJoinCommand(table);
+            VerticalJoinCommand.IncoherentColumnCountException target = new VerticalJoinCommand.IncoherentColumnCountException();
             Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
-        /// <summary>
-        ///A test for Execute
-        ///</summary>
-        [TestMethod()]
-        public void ExecuteTest()
-        {
-            Table table = null; // TODO: Initialize to an appropriate value
-            VerticalJoinCommand target = new VerticalJoinCommand(table); // TODO: Initialize to an appropriate value
-            Table firstTable = null; // TODO: Initialize to an appropriate value
-            Table expected = null; // TODO: Initialize to an appropriate value
-            Table actual;
-            actual = target.Execute(firstTable);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }

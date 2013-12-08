@@ -1,18 +1,17 @@
 ﻿using UDM;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 
-namespace UDMTest
+namespace TestUDM
 {
     
     
     /// <summary>
-    ///This is a test class for SelectCommandTest and is intended
-    ///to contain all SelectCommandTest Unit Tests
+    ///This is a test class for ProgramTest and is intended
+    ///to contain all ProgramTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class SelectCommandTest
+    public class ProgramTest
     {
 
 
@@ -66,41 +65,25 @@ namespace UDMTest
 
 
         /// <summary>
-        ///A test for SelectCommand Constructor
+        ///A test for Program Constructor
         ///</summary>
         [TestMethod()]
-        public void SelectCommandConstructorTest()
+        public void ProgramConstructorTest()
         {
-            List<int> selectedIndeces = null; // TODO: Initialize to an appropriate value
-            SelectCommand target = new SelectCommand(selectedIndeces);
+            Program target = new Program();
             Assert.Inconclusive("TODO: Implement code to verify target");
         }
 
         /// <summary>
-        ///A test for SelectCommand Constructor
+        ///A test for Main
         ///</summary>
         [TestMethod()]
-        public void SelectCommandConstructorTest1()
+        [DeploymentItem("UDM.exe")]
+        public void MainTest()
         {
-            List<Column<object>> selectedColumns = null; // TODO: Initialize to an appropriate value
-            SelectCommand target = new SelectCommand(selectedColumns);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
-        /// <summary>
-        ///A test for Execute
-        ///</summary>
-        [TestMethod()]
-        public void ExecuteTest()
-        {
-            List<Column<object>> selectedColumns = null; // TODO: Initialize to an appropriate value
-            SelectCommand target = new SelectCommand(selectedColumns); // TODO: Initialize to an appropriate value
-            Table table = null; // TODO: Initialize to an appropriate value
-            Table expected = null; // TODO: Initialize to an appropriate value
-            Table actual;
-            actual = target.Execute(table);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            string[] args = null; // TODO: Initialize to an appropriate value
+            Program_Accessor.Main(args);
+            Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
     }
 }

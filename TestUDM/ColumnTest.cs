@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 
-namespace UDMTest
+namespace TestUDM
 {
     
     
@@ -66,53 +66,44 @@ namespace UDMTest
 
 
         /// <summary>
-        ///A test for Column`1 Constructor
+        ///A test for Column Constructor
         ///</summary>
-        public void ColumnConstructorTestHelper<T>()
-        {
-            string name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Cell<T>> cells = null; // TODO: Initialize to an appropriate value
-            DataType type = new DataType(); // TODO: Initialize to an appropriate value
-            Column<T> target = new Column<T>(name, cells, type);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
         [TestMethod()]
         public void ColumnConstructorTest()
         {
-            ColumnConstructorTestHelper<GenericParameterHelper>();
+            string name = string.Empty; // TODO: Initialize to an appropriate value
+            DataType type = new DataType(); // TODO: Initialize to an appropriate value
+            List<Cell> cells = null; // TODO: Initialize to an appropriate value
+            Column target = new Column(name, type, cells);
+            Assert.Inconclusive("TODO: Implement code to verify target");
         }
 
         /// <summary>
         ///A test for AddCell
         ///</summary>
-        public void AddCellTestHelper<T>()
-        {
-            string name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Cell<T>> cells = null; // TODO: Initialize to an appropriate value
-            DataType type = new DataType(); // TODO: Initialize to an appropriate value
-            Column<T> target = new Column<T>(name, cells, type); // TODO: Initialize to an appropriate value
-            Cell<T> cell = null; // TODO: Initialize to an appropriate value
-            target.AddCell(cell);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
         [TestMethod()]
         public void AddCellTest()
         {
-            AddCellTestHelper<GenericParameterHelper>();
+            string name = string.Empty; // TODO: Initialize to an appropriate value
+            DataType type = new DataType(); // TODO: Initialize to an appropriate value
+            List<Cell> cells = null; // TODO: Initialize to an appropriate value
+            Column target = new Column(name, type, cells); // TODO: Initialize to an appropriate value
+            Cell cell = null; // TODO: Initialize to an appropriate value
+            target.AddCell(cell);
+            Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
         /// <summary>
         ///A test for RemoveCell
         ///</summary>
-        public void RemoveCellTestHelper<T>()
+        [TestMethod()]
+        public void RemoveCellTest()
         {
             string name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Cell<T>> cells = null; // TODO: Initialize to an appropriate value
             DataType type = new DataType(); // TODO: Initialize to an appropriate value
-            Column<T> target = new Column<T>(name, cells, type); // TODO: Initialize to an appropriate value
-            Cell<T> cell = null; // TODO: Initialize to an appropriate value
+            List<Cell> cells = null; // TODO: Initialize to an appropriate value
+            Column target = new Column(name, type, cells); // TODO: Initialize to an appropriate value
+            Cell cell = null; // TODO: Initialize to an appropriate value
             bool expected = false; // TODO: Initialize to an appropriate value
             bool actual;
             actual = target.RemoveCell(cell);
@@ -120,44 +111,51 @@ namespace UDMTest
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
+        /// <summary>
+        ///A test for ToString
+        ///</summary>
         [TestMethod()]
-        public void RemoveCellTest()
+        public void ToStringTest()
         {
-            RemoveCellTestHelper<GenericParameterHelper>();
+            string name = string.Empty; // TODO: Initialize to an appropriate value
+            DataType type = new DataType(); // TODO: Initialize to an appropriate value
+            List<Cell> cells = null; // TODO: Initialize to an appropriate value
+            Column target = new Column(name, type, cells); // TODO: Initialize to an appropriate value
+            string expected = string.Empty; // TODO: Initialize to an appropriate value
+            string actual;
+            actual = target.ToString();
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
         ///A test for Cells
         ///</summary>
-        public void CellsTestHelper<T>()
+        [TestMethod()]
+        public void CellsTest()
         {
             string name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Cell<T>> cells = null; // TODO: Initialize to an appropriate value
             DataType type = new DataType(); // TODO: Initialize to an appropriate value
-            Column<T> target = new Column<T>(name, cells, type); // TODO: Initialize to an appropriate value
-            List<Cell<T>> expected = null; // TODO: Initialize to an appropriate value
-            List<Cell<T>> actual;
+            List<Cell> cells = null; // TODO: Initialize to an appropriate value
+            Column target = new Column(name, type, cells); // TODO: Initialize to an appropriate value
+            List<Cell> expected = null; // TODO: Initialize to an appropriate value
+            List<Cell> actual;
             target.Cells = expected;
             actual = target.Cells;
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
-        [TestMethod()]
-        public void CellsTest()
-        {
-            CellsTestHelper<GenericParameterHelper>();
-        }
-
         /// <summary>
         ///A test for Name
         ///</summary>
-        public void NameTestHelper<T>()
+        [TestMethod()]
+        public void NameTest()
         {
             string name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Cell<T>> cells = null; // TODO: Initialize to an appropriate value
             DataType type = new DataType(); // TODO: Initialize to an appropriate value
-            Column<T> target = new Column<T>(name, cells, type); // TODO: Initialize to an appropriate value
+            List<Cell> cells = null; // TODO: Initialize to an appropriate value
+            Column target = new Column(name, type, cells); // TODO: Initialize to an appropriate value
             string expected = string.Empty; // TODO: Initialize to an appropriate value
             string actual;
             target.Name = expected;
@@ -166,30 +164,19 @@ namespace UDMTest
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
-        [TestMethod()]
-        public void NameTest()
-        {
-            NameTestHelper<GenericParameterHelper>();
-        }
-
         /// <summary>
         ///A test for Type
         ///</summary>
-        public void TypeTestHelper<T>()
-        {
-            string name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Cell<T>> cells = null; // TODO: Initialize to an appropriate value
-            DataType type = new DataType(); // TODO: Initialize to an appropriate value
-            Column<T> target = new Column<T>(name, cells, type); // TODO: Initialize to an appropriate value
-            DataType actual;
-            actual = target.Type;
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
         [TestMethod()]
         public void TypeTest()
         {
-            TypeTestHelper<GenericParameterHelper>();
+            string name = string.Empty; // TODO: Initialize to an appropriate value
+            DataType type = new DataType(); // TODO: Initialize to an appropriate value
+            List<Cell> cells = null; // TODO: Initialize to an appropriate value
+            Column target = new Column(name, type, cells); // TODO: Initialize to an appropriate value
+            DataType actual;
+            actual = target.Type;
+            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }

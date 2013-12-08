@@ -1,17 +1,18 @@
 ﻿using UDM;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
-namespace UDMTest
+namespace TestUDM
 {
     
     
     /// <summary>
-    ///This is a test class for CellTest and is intended
-    ///to contain all CellTest Unit Tests
+    ///This is a test class for AverageAggregationTest and is intended
+    ///to contain all AverageAggregationTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class CellTest
+    public class AverageAggregationTest
     {
 
 
@@ -65,40 +66,21 @@ namespace UDMTest
 
 
         /// <summary>
-        ///A test for Cell`1 Constructor
+        ///A test for GetAggregatedValue
         ///</summary>
-        public void CellConstructorTestHelper<T>()
-        {
-            T content = default(T); // TODO: Initialize to an appropriate value
-            Cell<T> target = new Cell<T>(content);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
         [TestMethod()]
-        public void CellConstructorTest()
+        public void GetAggregatedValueTest()
         {
-            CellConstructorTestHelper<GenericParameterHelper>();
-        }
-
-        /// <summary>
-        ///A test for Content
-        ///</summary>
-        public void ContentTestHelper<T>()
-        {
-            T content = default(T); // TODO: Initialize to an appropriate value
-            Cell<T> target = new Cell<T>(content); // TODO: Initialize to an appropriate value
-            T expected = default(T); // TODO: Initialize to an appropriate value
-            T actual;
-            target.Content = expected;
-            actual = target.Content;
+            Cell cell1 = new Cell(0.5);
+            Cell cell2 = new Cell(0.5);
+            List<Cell> cells = new List<Cell>();
+            cells.Add(cell1);
+            cells.Add(cell2);
+            AverageAggregation target = new AverageAggregation(cells);
+            double expected = 0.5;
+            double actual;
+            actual = (double)target.GetAggregatedValue();
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        [TestMethod()]
-        public void ContentTest()
-        {
-            ContentTestHelper<GenericParameterHelper>();
         }
     }
 }

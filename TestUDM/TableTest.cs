@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 
-namespace UDMTest
+namespace TestUDM
 {
     
     
@@ -72,9 +72,9 @@ namespace UDMTest
         public void TableConstructorTest()
         {
             string _name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Column<object>> columns = null; // TODO: Initialize to an appropriate value
             Table previous = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, columns, previous);
+            List<Column> columns = null; // TODO: Initialize to an appropriate value
+            Table target = new Table(_name, previous, columns);
             Assert.Inconclusive("TODO: Implement code to verify target");
         }
 
@@ -85,10 +85,10 @@ namespace UDMTest
         public void AddColumnTest()
         {
             string _name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Column<object>> columns = null; // TODO: Initialize to an appropriate value
             Table previous = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, columns, previous); // TODO: Initialize to an appropriate value
-            Column<object> column = null; // TODO: Initialize to an appropriate value
+            List<Column> columns = null; // TODO: Initialize to an appropriate value
+            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
+            Column column = null; // TODO: Initialize to an appropriate value
             target.AddColumn(column);
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
@@ -100,9 +100,9 @@ namespace UDMTest
         public void ExecuteTest()
         {
             string _name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Column<object>> columns = null; // TODO: Initialize to an appropriate value
             Table previous = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, columns, previous); // TODO: Initialize to an appropriate value
+            List<Column> columns = null; // TODO: Initialize to an appropriate value
+            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
             Command command = null; // TODO: Initialize to an appropriate value
             Table expected = null; // TODO: Initialize to an appropriate value
             Table actual;
@@ -118,9 +118,9 @@ namespace UDMTest
         public void NormalizeTest()
         {
             string _name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Column<object>> columns = null; // TODO: Initialize to an appropriate value
             Table previous = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, columns, previous); // TODO: Initialize to an appropriate value
+            List<Column> columns = null; // TODO: Initialize to an appropriate value
+            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
             Table expected = null; // TODO: Initialize to an appropriate value
             Table actual;
             actual = target.Normalize();
@@ -135,13 +135,30 @@ namespace UDMTest
         public void RemoveColumnTest()
         {
             string _name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Column<object>> columns = null; // TODO: Initialize to an appropriate value
             Table previous = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, columns, previous); // TODO: Initialize to an appropriate value
-            Column<object> column = null; // TODO: Initialize to an appropriate value
+            List<Column> columns = null; // TODO: Initialize to an appropriate value
+            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
+            Column column = null; // TODO: Initialize to an appropriate value
             bool expected = false; // TODO: Initialize to an appropriate value
             bool actual;
             actual = target.RemoveColumn(column);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for ToString
+        ///</summary>
+        [TestMethod()]
+        public void ToStringTest()
+        {
+            string _name = string.Empty; // TODO: Initialize to an appropriate value
+            Table previous = null; // TODO: Initialize to an appropriate value
+            List<Column> columns = null; // TODO: Initialize to an appropriate value
+            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
+            string expected = string.Empty; // TODO: Initialize to an appropriate value
+            string actual;
+            actual = target.ToString();
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -153,9 +170,9 @@ namespace UDMTest
         public void UndoTest()
         {
             string _name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Column<object>> columns = null; // TODO: Initialize to an appropriate value
             Table previous = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, columns, previous); // TODO: Initialize to an appropriate value
+            List<Column> columns = null; // TODO: Initialize to an appropriate value
+            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
             Table expected = null; // TODO: Initialize to an appropriate value
             Table actual;
             actual = target.Undo();
@@ -170,11 +187,11 @@ namespace UDMTest
         public void ColumnsTest()
         {
             string _name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Column<object>> columns = null; // TODO: Initialize to an appropriate value
             Table previous = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, columns, previous); // TODO: Initialize to an appropriate value
-            List<Column<object>> expected = null; // TODO: Initialize to an appropriate value
-            List<Column<object>> actual;
+            List<Column> columns = null; // TODO: Initialize to an appropriate value
+            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
+            List<Column> expected = null; // TODO: Initialize to an appropriate value
+            List<Column> actual;
             target.Columns = expected;
             actual = target.Columns;
             Assert.AreEqual(expected, actual);
@@ -188,9 +205,9 @@ namespace UDMTest
         public void NameTest()
         {
             string _name = string.Empty; // TODO: Initialize to an appropriate value
-            List<Column<object>> columns = null; // TODO: Initialize to an appropriate value
             Table previous = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, columns, previous); // TODO: Initialize to an appropriate value
+            List<Column> columns = null; // TODO: Initialize to an appropriate value
+            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
             string actual;
             actual = target.Name;
             Assert.Inconclusive("Verify the correctness of this test method.");

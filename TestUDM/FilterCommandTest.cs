@@ -2,16 +2,16 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace UDMTest
+namespace TestUDM
 {
     
     
     /// <summary>
-    ///This is a test class for HorizontalJoinCommandTest and is intended
-    ///to contain all HorizontalJoinCommandTest Unit Tests
+    ///This is a test class for FilterCommandTest and is intended
+    ///to contain all FilterCommandTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class HorizontalJoinCommandTest
+    public class FilterCommandTest
     {
 
 
@@ -65,13 +65,14 @@ namespace UDMTest
 
 
         /// <summary>
-        ///A test for HorizontalJoinCommand Constructor
+        ///A test for FilterCommand Constructor
         ///</summary>
         [TestMethod()]
-        public void HorizontalJoinCommandConstructorTest()
+        public void FilterCommandConstructorTest()
         {
-            Table table = null; // TODO: Initialize to an appropriate value
-            HorizontalJoinCommand target = new HorizontalJoinCommand(table);
+            Column column = null; // TODO: Initialize to an appropriate value
+            FilterCommand.Del del = null; // TODO: Initialize to an appropriate value
+            FilterCommand target = new FilterCommand(column, del);
             Assert.Inconclusive("TODO: Implement code to verify target");
         }
 
@@ -81,12 +82,13 @@ namespace UDMTest
         [TestMethod()]
         public void ExecuteTest()
         {
+            Column column = null; // TODO: Initialize to an appropriate value
+            FilterCommand.Del del = null; // TODO: Initialize to an appropriate value
+            FilterCommand target = new FilterCommand(column, del); // TODO: Initialize to an appropriate value
             Table table = null; // TODO: Initialize to an appropriate value
-            HorizontalJoinCommand target = new HorizontalJoinCommand(table); // TODO: Initialize to an appropriate value
-            Table firstTable = null; // TODO: Initialize to an appropriate value
             Table expected = null; // TODO: Initialize to an appropriate value
             Table actual;
-            actual = target.Execute(firstTable);
+            actual = target.Execute(table);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
