@@ -30,7 +30,7 @@ namespace UDM
             s.AddCell(s5);
             
 
-            Column l = new Column("Sprzedaż", DataType.IntegerFact);
+            Column l = new Column("Sprzedaż", DataType.FloatFact);
             l.AddCell(l1);
             l.AddCell(l2);
             l.AddCell(l3);
@@ -48,10 +48,9 @@ namespace UDM
             Cell s31 = new Cell("Hamburg");
 
 
-            Cell l11 = new Cell(70);
-            Cell l21 = new Cell(65);
-            Cell l31 = new Cell(11);
-
+            Cell l11 = new Cell(70.3);
+            Cell l21 = new Cell((double)65);
+            Cell l31 = new Cell((double)15);
 
             Column ss = new Column("Miasto", DataType.Dimension);
             ss.AddCell(s11);
@@ -79,15 +78,25 @@ namespace UDM
             //Console.WriteLine(first_table.Execute(new FilterCommand(first_table.Columns[1],cellContent => (int)cellContent > 20)));
 
 
-            try
-            {
-                Console.WriteLine(first_table.Execute(new VerticalJoinCommand(second_table)));
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            //try
+            //{
+            //    Console.WriteLine(first_table.Execute(new VerticalJoinCommand(second_table)));
+            //}
+            //catch (Exception)
+            //{
+            //    throw;
+            //}
 
+            List<Cell> cells = new List<Cell>();
+            cells.Add(l11);
+            cells.Add(l21);
+            cells.Add(l31);
+
+            Console.WriteLine((double)(new SumAggregation(cells)).GetAggregatedValue());
+            Console.WriteLine((double)(new MaxAggregation(cells)).GetAggregatedValue());
+            Console.WriteLine((int)(new CountAggregation(cells)).GetAggregatedValue());
+            Console.WriteLine((double)(new MinAggregation(cells)).GetAggregatedValue());
+            Console.WriteLine((double)(new AverageAggregation(cells)).GetAggregatedValue());
             
             Console.ReadKey();
         }

@@ -29,10 +29,7 @@ namespace UDM
                 }
 
             }
-
-            return new Table(table.Name,null,selectedColumns);
-
-
+            return new Table(table.Name, null, selectedColumns);
         }
     }
 }
