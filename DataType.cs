@@ -5,10 +5,9 @@ using System.Text;
 
 public enum DataType
 {
-    StringDimension = 0,
-    DateDimension = 1,
-    IntegerFact = 2,
-    DoubleFact = 3
+    Dimension = 0,
+    IntegerFact = 1,
+    FloatFact = 2
 }
 
 
