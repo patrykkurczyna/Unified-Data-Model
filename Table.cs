@@ -21,6 +21,13 @@ namespace UDM
             set { columns = value; }
         }
 
+        public Table()
+        {
+            this._name = "";
+            this.columns = new List<Column>();
+            this.previous = null;
+        }
+
         public Table(String _name, Table previous, List<Column> columns = null)
         {
             this._name = _name;
