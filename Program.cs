@@ -22,7 +22,7 @@ namespace UDM
             Cell l4 = new Cell(40);
             Cell l5 = new Cell(50);
 
-            Column s = new Column("Miasto", DataType.Dimension);
+            Column s = new Column("Miasto", DataType.StringDimension);
             s.AddCell(s1);
             s.AddCell(s2);
             s.AddCell(s3);
@@ -52,7 +52,7 @@ namespace UDM
             Cell l21 = new Cell((double)65);
             Cell l31 = new Cell((double)15);
 
-            Column ss = new Column("Miasto", DataType.Dimension);
+            Column ss = new Column("Miasto", DataType.StringDimension);
             ss.AddCell(s11);
             ss.AddCell(s21);
             ss.AddCell(s31);

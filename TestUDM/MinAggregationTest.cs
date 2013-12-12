@@ -6,8 +6,8 @@ using Moq;
 
 namespace TestUDM
 {
-    
-    
+
+
     /// <summary>
     ///This is a test class for MinAggregationTest and is intended
     ///to contain all MinAggregationTest Unit Tests
@@ -95,5 +95,6 @@ namespace TestUDM
             actual = (double)target.GetAggregatedValue();
             Assert.AreEqual(expected, actual);
         }
-    
+
+    }
 }

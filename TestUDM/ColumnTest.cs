@@ -136,7 +136,7 @@ namespace TestUDM
             cells.Add(cell2.Object);
             cells.Add(cell3.Object);
             cells.Add(cell4.Object);
-            target = new Column(name, DataType.Dimension, cells);
+            target = new Column(name, DataType.StringDimension, cells);
             expected = name + "\npięć sześć siedem jeden ";
             actual = target.ToString();
             Assert.AreEqual(expected, actual);
