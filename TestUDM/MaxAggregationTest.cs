@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using Moq;
 
 namespace TestUDM
 {
@@ -64,31 +65,34 @@ namespace TestUDM
         //
         #endregion
 
-
-        /// <summary>
-        ///A test for MaxAggregation Constructor
-        ///</summary>
-        [TestMethod()]
-        public void MaxAggregationConstructorTest()
-        {
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            MaxAggregation target = new MaxAggregation(cells);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
         /// <summary>
         ///A test for GetAggregatedValue
         ///</summary>
         [TestMethod()]
         public void GetAggregatedValueTest()
         {
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            MaxAggregation target = new MaxAggregation(cells); // TODO: Initialize to an appropriate value
-            object expected = null; // TODO: Initialize to an appropriate value
-            object actual;
-            actual = target.GetAggregatedValue();
+            var cell1 = new Mock<Cell>();
+            var cell2 = new Mock<Cell>();
+            var cell3 = new Mock<Cell>();
+            var cell4 = new Mock<Cell>();
+            cell1.Setup(foo => foo.Content).Returns(0.6);
+            cell2.Setup(foo => foo.Content).Returns(3);
+            cell3.Setup(foo => foo.Content).Returns(0.6);
+            cell4.Setup(foo => foo.Content).Returns(5);
+            List<Cell> cells = new List<Cell>();
+            cells.Add(cell1.Object);
+            cells.Add(cell2.Object);
+            cells.Add(cell3.Object);
+            MaxAggregation target = new MaxAggregation(cells);
+            double expected = 3;
+            double actual;
+            actual = (double)target.GetAggregatedValue();
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+
+            cells.Add(cell4.Object);
+            expected = 5;
+            actual = (double)target.GetAggregatedValue();
+            Assert.AreEqual(expected, actual);
         }
     }
 }

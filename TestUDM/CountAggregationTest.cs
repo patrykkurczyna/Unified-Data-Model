@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using Moq;
 
 namespace TestUDM
 {
@@ -66,29 +67,27 @@ namespace TestUDM
 
 
         /// <summary>
-        ///A test for CountAggregation Constructor
-        ///</summary>
-        [TestMethod()]
-        public void CountAggregationConstructorTest()
-        {
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            CountAggregation target = new CountAggregation(cells);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
-        /// <summary>
         ///A test for GetAggregatedValue
         ///</summary>
         [TestMethod()]
         public void GetAggregatedValueTest()
         {
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            CountAggregation target = new CountAggregation(cells); // TODO: Initialize to an appropriate value
-            object expected = null; // TODO: Initialize to an appropriate value
-            object actual;
-            actual = target.GetAggregatedValue();
+            var cell1 = new Mock<Cell>();
+            var cell2 = new Mock<Cell>();
+            var cell3 = new Mock<Cell>();
+            List<Cell> cells = new List<Cell>();
+            cells.Add(cell1.Object);
+            cells.Add(cell2.Object);
+            CountAggregation target = new CountAggregation(cells);
+            double expected = 2;
+            double actual;
+            actual = (double)target.GetAggregatedValue();
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+
+            cells.Add(cell3.Object);
+            expected = 3;
+            actual = (double)target.GetAggregatedValue();
+            Assert.AreEqual(expected, actual);
         }
     }
 }

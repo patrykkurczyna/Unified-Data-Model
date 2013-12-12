@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using Moq;
 
 namespace TestUDM
 {
@@ -71,16 +72,26 @@ namespace TestUDM
         [TestMethod()]
         public void GetAggregatedValueTest()
         {
-            Cell cell1 = new Cell(0.5);
-            Cell cell2 = new Cell(0.5);
+            var cell1 = new Mock<Cell>();
+            var cell2 = new Mock<Cell>();
+            var cell3 = new Mock<Cell>();
+            cell1.Setup(foo => foo.Content).Returns(0.5);
+            cell2.Setup(foo => foo.Content).Returns(0.5);
+            cell3.Setup(foo => foo.Content).Returns(2);
             List<Cell> cells = new List<Cell>();
-            cells.Add(cell1);
-            cells.Add(cell2);
+            cells.Add(cell1.Object);
+            cells.Add(cell2.Object);
             AverageAggregation target = new AverageAggregation(cells);
             double expected = 0.5;
             double actual;
             actual = (double)target.GetAggregatedValue();
             Assert.AreEqual(expected, actual);
+
+            cells.Add(cell3.Object);
+            expected = 1;
+            actual = (double)target.GetAggregatedValue();
+            Assert.AreEqual(expected, actual);
+            
         }
     }
 }

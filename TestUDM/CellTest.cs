@@ -64,16 +64,6 @@ namespace TestUDM
         #endregion
 
 
-        /// <summary>
-        ///A test for Cell Constructor
-        ///</summary>
-        [TestMethod()]
-        public void CellConstructorTest()
-        {
-            object content = null; // TODO: Initialize to an appropriate value
-            Cell target = new Cell(content);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
 
         /// <summary>
         ///A test for ToString
@@ -81,13 +71,16 @@ namespace TestUDM
         [TestMethod()]
         public void ToStringTest()
         {
-            object content = null; // TODO: Initialize to an appropriate value
-            Cell target = new Cell(content); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
+            Cell target = new Cell(5.5);
+            string expected = "5.5";
             string actual;
             actual = target.ToString();
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+
+            target = new Cell("Ziemniak");
+            expected = "Ziemniak";
+            actual = target.ToString();
+            Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
@@ -96,14 +89,12 @@ namespace TestUDM
         [TestMethod()]
         public void ContentTest()
         {
-            object content = null; // TODO: Initialize to an appropriate value
-            Cell target = new Cell(content); // TODO: Initialize to an appropriate value
-            object expected = null; // TODO: Initialize to an appropriate value
+            Cell target = new Cell(5);
+            object expected = 5;
             object actual;
             target.Content = expected;
             actual = target.Content;
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }
