@@ -7,11 +7,6 @@ namespace UDM
 {
     public class MinAggregation : Aggregation
     {
-        public class BadColumnForMaximizeException : InvalidCastException
-        {
-            public BadColumnForMaximizeException() : base("Nie można uzyskać maksymalnej wartości z kolumny, której typ to FAKT!") { }
-        }
-
         public override Object GetAggregatedValue()
         {
             double min = Double.MaxValue;
@@ -21,7 +16,7 @@ namespace UDM
                 {
                     if ((double)cell.Content < min) min = (double)cell.Content;
                 }
-                catch (BadColumnForMaximizeException)
+                catch (BadColumnForThisOperationException)
                 {
                     throw;
                 }

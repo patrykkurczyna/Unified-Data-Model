@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AverageAggregation.cs" />
+    <Compile Include="BadColumnForThisOperationException.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="Aggregation.cs" />
     <Compile Include="CountAggregation.cs" />

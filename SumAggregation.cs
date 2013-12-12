@@ -12,7 +12,15 @@ namespace UDM
             double sum = 0.0;
             foreach (Cell cell in this.cells)
             {
-                sum += (double)cell.Content;
+                try
+                {
+                    sum += (double)cell.Content;
+                }
+                catch (BadColumnForThisOperationException)
+                {
+                    
+                    throw;
+                }
             }
             return sum;
         }
