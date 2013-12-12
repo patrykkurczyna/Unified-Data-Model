@@ -75,9 +75,9 @@ namespace TestUDM
             var cell1 = new Mock<Cell>();
             var cell2 = new Mock<Cell>();
             var cell3 = new Mock<Cell>();
-            cell1.Setup(foo => foo.Content).Returns(0.5);
-            cell2.Setup(foo => foo.Content).Returns(0.5);
-            cell3.Setup(foo => foo.Content).Returns(2);
+            cell1.SetupGet(foo => foo.Content).Returns(0.5);
+            cell2.SetupGet(foo => foo.Content).Returns(0.5);
+            cell3.SetupGet(foo => foo.Content).Returns(2);
             List<Cell> cells = new List<Cell>();
             cells.Add(cell1.Object);
             cells.Add(cell2.Object);
