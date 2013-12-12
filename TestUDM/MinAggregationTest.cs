@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using Moq;
 
 namespace TestUDM
 {
@@ -66,29 +67,33 @@ namespace TestUDM
 
 
         /// <summary>
-        ///A test for MinAggregation Constructor
-        ///</summary>
-        [TestMethod()]
-        public void MinAggregationConstructorTest()
-        {
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            MinAggregation target = new MinAggregation(cells);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
-        /// <summary>
         ///A test for GetAggregatedValue
         ///</summary>
         [TestMethod()]
         public void GetAggregatedValueTest()
         {
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            MinAggregation target = new MinAggregation(cells); // TODO: Initialize to an appropriate value
-            object expected = null; // TODO: Initialize to an appropriate value
-            object actual;
-            actual = target.GetAggregatedValue();
+            var cell1 = new Mock<Cell>();
+            var cell2 = new Mock<Cell>();
+            var cell3 = new Mock<Cell>();
+            var cell4 = new Mock<Cell>();
+            cell1.Setup(foo => foo.Content).Returns(0.6);
+            cell2.Setup(foo => foo.Content).Returns(3);
+            cell3.Setup(foo => foo.Content).Returns(0.3);
+            cell4.Setup(foo => foo.Content).Returns(0.1);
+            List<Cell> cells = new List<Cell>();
+            cells.Add(cell1.Object);
+            cells.Add(cell2.Object);
+            cells.Add(cell3.Object);
+            MinAggregation target = new MinAggregation(cells);
+            double expected = 0.3;
+            double actual;
+            actual = (double)target.GetAggregatedValue();
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+
+            cells.Add(cell4.Object);
+            expected = 0.1;
+            actual = (double)target.GetAggregatedValue();
+            Assert.AreEqual(expected, actual);
         }
-    }
+    
 }

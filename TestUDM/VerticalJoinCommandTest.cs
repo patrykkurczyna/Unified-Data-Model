@@ -1,6 +1,8 @@
 ﻿using UDM;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
+using Moq;
 
 namespace TestUDM
 {
@@ -63,32 +65,84 @@ namespace TestUDM
         //
         #endregion
 
-
-        /// <summary>
-        ///A test for VerticalJoinCommand Constructor
-        ///</summary>
-        [TestMethod()]
-        public void VerticalJoinCommandConstructorTest()
-        {
-            Table table = null; // TODO: Initialize to an appropriate value
-            VerticalJoinCommand target = new VerticalJoinCommand(table);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
         /// <summary>
         ///A test for Execute
         ///</summary>
         [TestMethod()]
         public void ExecuteTest()
         {
-            Table table = null; // TODO: Initialize to an appropriate value
-            VerticalJoinCommand target = new VerticalJoinCommand(table); // TODO: Initialize to an appropriate value
-            Table firstTable = null; // TODO: Initialize to an appropriate value
-            Table expected = null; // TODO: Initialize to an appropriate value
-            Table actual;
-            actual = target.Execute(firstTable);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            var table = new Mock<Table>();
+            var table2 = new Mock<Table>();
+            
+            var cell1 = new Mock<Cell>();
+            var cell2 = new Mock<Cell>();
+            var cell3 = new Mock<Cell>();
+            var cell4 = new Mock<Cell>();
+            var cell5 = new Mock<Cell>();
+            var cell6 = new Mock<Cell>();
+            var cell7 = new Mock<Cell>();
+            var cell8 = new Mock<Cell>();
+
+            List<Cell> list1 = new List<Cell>();
+            List<Cell> list2 = new List<Cell>();
+            List<Cell> list3 = new List<Cell>();
+            List<Cell> list4 = new List<Cell>();
+
+            list1.Add(cell1.Object);
+            list1.Add(cell2.Object);
+            list2.Add(cell3.Object);
+            list2.Add(cell4.Object);
+            list3.Add(cell5.Object);
+            list3.Add(cell6.Object);
+            list4.Add(cell7.Object);
+
+            var column1 = new Mock<Column>();
+            var column2 = new Mock<Column>();
+            var column3 = new Mock<Column>();
+            var column4 = new Mock<Column>();
+
+            column1.Setup(foo => foo.Cells).Returns(list1);
+            column2.Setup(foo => foo.Cells).Returns(list2);
+            column3.Setup(foo => foo.Cells).Returns(list3);
+            column4.Setup(foo => foo.Cells).Returns(list4);
+
+            List<Column> columns1 = new List<Column>();
+            List<Column> columns2 = new List<Column>();
+
+            columns1.Add(column1.Object);
+            columns1.Add(column2.Object);
+            columns2.Add(column3.Object);
+            columns2.Add(column4.Object);
+
+            //to są dwie tabele do połączenia
+            table.Setup(foo => foo.Columns).Returns(columns1);
+            table2.Setup(foo => foo.Columns).Returns(columns2);
+
+            VerticalJoinCommand target = new VerticalJoinCommand(table2.Object);
+
+            var table3 = new Mock<Table>(); //taką tabelę będziemy chcieli uzyskać
+
+            //to są kolumny tabeli, którą chcemy uzyskać
+            var column5 = new Mock<Column>();
+            var column6 = new Mock<Column>();
+
+            List<Cell> list5 = new List<Cell>();
+            list5.AddRange(list1);
+            list5.AddRange(list3);
+            column5.Setup(foo => foo.Cells).Returns(list5);
+
+            List<Cell> list6 = new List<Cell>();
+            list6.AddRange(list2);
+            list6.AddRange(list4);
+            column6.Setup(foo => foo.Cells).Returns(list6);
+
+            List<Column> columns3 = new List<Column>(); //lista kolumn tabeli, którą chcemy uzyskać
+            
+            table3.Setup(foo => foo.Columns).Returns(columns3); //gotowy mock tabeli
+            
+
+            Assert.AreEqual(table3.Object.Columns, target.Execute(table.Object));
+
         }
     }
 }

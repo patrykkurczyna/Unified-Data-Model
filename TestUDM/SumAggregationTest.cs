@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using Moq;
 
 namespace TestUDM
 {
@@ -65,16 +66,6 @@ namespace TestUDM
         #endregion
 
 
-        /// <summary>
-        ///A test for SumAggregation Constructor
-        ///</summary>
-        [TestMethod()]
-        public void SumAggregationConstructorTest()
-        {
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            SumAggregation target = new SumAggregation(cells);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
 
         /// <summary>
         ///A test for GetAggregatedValue
@@ -82,13 +73,18 @@ namespace TestUDM
         [TestMethod()]
         public void GetAggregatedValueTest()
         {
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            SumAggregation target = new SumAggregation(cells); // TODO: Initialize to an appropriate value
-            object expected = null; // TODO: Initialize to an appropriate value
-            object actual;
-            actual = target.GetAggregatedValue();
+            List<Cell> cells = new List<Cell>();
+            for (int i = 0; i < 10; i++)
+            {
+                var cell = new Mock<Cell>();
+                cell.Setup(foo => foo.Content).Returns(i);
+                cells.Add(cell.Object);
+            }
+            SumAggregation target = new SumAggregation(cells);
+            double expected = 49;
+            double actual;
+            actual = (double)target.GetAggregatedValue();
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }

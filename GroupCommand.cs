@@ -35,15 +35,42 @@ namespace UDM
         {   
             foreach(Column column in groupingColumns)
             {
-                if (column.Type != DataType.Dimension) throw new BadColumnsChooseForGroupingException();
+                if (column.Type != DataType.StringDimension && column.Type != DataType.DateDimension) throw new BadColumnsChooseForGroupingException();
             }
             foreach(Column column in aggregatedColumns.Keys)
             {
-                if (column.Type == DataType.Dimension) throw new BadColumnsChooseForAggregationException();
+                if (column.Type == DataType.StringDimension || column.Type == DataType.DateDimension) throw new BadColumnsChooseForAggregationException();
             }
             if ((groupingColumns.Count + aggregatedColumns.Count) != table.Columns.Count)
                 throw new AllColumnsShouldBeSelectedForGroupingException();
 
+            List<Column> newColumns = new List<Column>();
+
+            List<Column> newAggregatedColumns = new List<Column>();
+
+            
+
+            foreach (Column gCol in groupingColumns)
+            {
+                Dictionary<Object,List<Column>> map = new Dictionary<Object,List<Column>>();
+                foreach (Cell cell in gCol.Cells)
+                {
+                    if (!map.ContainsKey(cell.Content))
+                    {
+                        List<Column> mapList = new List<Column>();
+
+                        map.Add(cell, new List<Column>());
+                    }
+                    
+                }
+
+                foreach (KeyValuePair<Column,Aggregation> col in aggregatedColumns)
+                {
+                    
+                    Column newColumn = new Column(col.Key.Name,col.Key.Type,cells);
+                    newAggregatedColumns.Add(newColumn);
+                }
+            }
 
             
 

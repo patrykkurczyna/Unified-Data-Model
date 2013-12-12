@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using Moq;
 
 namespace TestUDM
 {
@@ -66,19 +67,6 @@ namespace TestUDM
 
 
         /// <summary>
-        ///A test for Column Constructor
-        ///</summary>
-        [TestMethod()]
-        public void ColumnConstructorTest()
-        {
-            string name = string.Empty; // TODO: Initialize to an appropriate value
-            DataType type = new DataType(); // TODO: Initialize to an appropriate value
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            Column target = new Column(name, type, cells);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
-        /// <summary>
         ///A test for AddCell
         ///</summary>
         [TestMethod()]
@@ -117,15 +105,41 @@ namespace TestUDM
         [TestMethod()]
         public void ToStringTest()
         {
-            string name = string.Empty; // TODO: Initialize to an appropriate value
-            DataType type = new DataType(); // TODO: Initialize to an appropriate value
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            Column target = new Column(name, type, cells); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
+            //kolumna integerów
+            string name = "Nazwa";
+            List<Cell> cells = new List<Cell>();
+            var cell1 = new Mock<Cell>();
+            var cell2 = new Mock<Cell>();
+            var cell3 = new Mock<Cell>();
+            var cell4 = new Mock<Cell>();
+            cell1.Setup(foo => foo.ToString()).Returns("5");
+            cell2.Setup(foo => foo.ToString()).Returns("6");
+            cell3.Setup(foo => foo.ToString()).Returns("7");
+            cell4.Setup(foo => foo.ToString()).Returns("1");
+            cells.Add(cell1.Object);
+            cells.Add(cell2.Object);
+            cells.Add(cell3.Object);
+            cells.Add(cell4.Object);
+            Column target = new Column(name, DataType.IntegerFact, cells);
+            string expected = name + "\n5 6 7 1 ";
             string actual;
             actual = target.ToString();
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+
+            //kolumna stringów
+            cell1.Setup(foo => foo.ToString()).Returns("pięć");
+            cell2.Setup(foo => foo.ToString()).Returns("sześć");
+            cell3.Setup(foo => foo.ToString()).Returns("siedem");
+            cell4.Setup(foo => foo.ToString()).Returns("jeden");
+            cells = new List<Cell>();
+            cells.Add(cell1.Object);
+            cells.Add(cell2.Object);
+            cells.Add(cell3.Object);
+            cells.Add(cell4.Object);
+            target = new Column(name, DataType.Dimension, cells);
+            expected = name + "\npięć sześć siedem jeden ";
+            actual = target.ToString();
+            Assert.AreEqual(expected, actual);
         }
 
         /// <summary>

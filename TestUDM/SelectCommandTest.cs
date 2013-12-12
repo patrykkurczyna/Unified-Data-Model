@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using Moq;
 
 namespace TestUDM
 {
@@ -64,43 +65,39 @@ namespace TestUDM
         //
         #endregion
 
-
-        /// <summary>
-        ///A test for SelectCommand Constructor
-        ///</summary>
-        [TestMethod()]
-        public void SelectCommandConstructorTest()
-        {
-            List<int> selectedIndeces = null; // TODO: Initialize to an appropriate value
-            SelectCommand target = new SelectCommand(selectedIndeces);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
-        /// <summary>
-        ///A test for SelectCommand Constructor
-        ///</summary>
-        [TestMethod()]
-        public void SelectCommandConstructorTest1()
-        {
-            List<Column> selectedColumns = null; // TODO: Initialize to an appropriate value
-            SelectCommand target = new SelectCommand(selectedColumns);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
         /// <summary>
         ///A test for Execute
         ///</summary>
         [TestMethod()]
         public void ExecuteTest()
         {
-            List<Column> selectedColumns = null; // TODO: Initialize to an appropriate value
-            SelectCommand target = new SelectCommand(selectedColumns); // TODO: Initialize to an appropriate value
-            Table table = null; // TODO: Initialize to an appropriate value
-            Table expected = null; // TODO: Initialize to an appropriate value
-            Table actual;
-            actual = target.Execute(table);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            //po referencjach do kolumn
+            List<Column> originalColumns = new List<Column>();
+            var column1 = new Mock<Column>();
+            var column2 = new Mock<Column>();
+            var column3 = new Mock<Column>(); 
+            originalColumns.Add(column1.Object);
+            originalColumns.Add(column2.Object);
+            originalColumns.Add(column3.Object);
+            List<Column> selectedColumns = new List<Column>();
+            selectedColumns.Add(column1.Object);
+            selectedColumns.Add(column3.Object);
+            SelectCommand target = new SelectCommand(selectedColumns);
+            var table = new Mock<Table>(); //tabela oryginalna
+            var table2 = new Mock<Table>(); //tabela, która powinna powstać
+            table.Setup(foo => foo.Columns).Returns(originalColumns);
+            table2.Setup(foo => foo.Columns).Returns(selectedColumns);
+            List<Column> receivedColumns = target.Execute(table.Object).Columns;
+            Assert.AreEqual(table2.Object.Columns, receivedColumns);
+            
+            //po indeksach
+            List<int> selectedIndeces = new List<int>();
+            selectedIndeces.Add(0);
+            selectedIndeces.Add(2);
+            target = new SelectCommand(selectedIndeces);
+            receivedColumns = target.Execute(table.Object).Columns;
+            Assert.AreEqual(table2.Object.Columns, receivedColumns);
+
         }
     }
 }
