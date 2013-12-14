@@ -46,6 +46,38 @@ namespace UDM
 
             List<Column> newColumns = new List<Column>();
 
+<<<<<<< HEAD
+            //List<Column> newAggregatedColumns = new List<Column>();
+
+            
+
+            foreach (Column gCol in groupingColumns)
+            {
+                Dictionary<Object,List<Column>> map = new Dictionary<Object,List<Column>>();
+                for (int i = 0; i<gCol.Cells.Count; i++)
+                {
+                    Cell cell = gCol.Cells[i];
+                    if (!map.ContainsKey(cell.Content))
+                    {
+                        List<Column> mapList = new List<Column>();
+                
+                        foreach (Column key in aggregatedColumns.Keys)
+                        {
+                            mapList.Add(new Column(key.Name,key.Type,new List<Cell>()));
+                        }
+                        map.Add(cell.Content, mapList);
+                    }
+                    List<Column> newAggregatedColumns = map[cell.Content];
+                    for (int j = 0; j < aggregatedColumns.Count; j++)
+                    {
+                        newAggregatedColumns[j].AddCell(aggregatedColumns.Keys.ToList<Column>()[j].Cells[i]);
+                    }
+                    
+                }
+
+                
+            }
+=======
             List<Column> newAggregatedColumns = new List<Column>();
 
             
@@ -71,6 +103,7 @@ namespace UDM
             //        newAggregatedColumns.Add(newColumn);
             //    }
             //}
+>>>>>>> origin/master
 
             
 
