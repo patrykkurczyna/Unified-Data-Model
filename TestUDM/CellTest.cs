@@ -72,7 +72,7 @@ namespace TestUDM
         public void ToStringTest()
         {
             Cell target = new Cell(5.5);
-            string expected = "5.5";
+            string expected = "5,5";
             string actual;
             actual = target.ToString();
             Assert.AreEqual(expected, actual);

@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Moq">
-      <HintPath>packages\Moq.4.1.1311.0615\lib\net40\Moq.dll</HintPath>
+      <HintPath>packages\Moq.4.2.1312.1622\lib\net40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,11 +50,11 @@
     <Compile Include="BadColumnForThisOperationException.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="Aggregation.cs" />
+    <Compile Include="Command.cs" />
     <Compile Include="CountAggregation.cs" />
     <Compile Include="DataType.cs" />
     <Compile Include="GroupCommand.cs" />
     <Compile Include="FilterCommand.cs" />
-    <Compile Include="Command.cs" />
     <Compile Include="Column.cs" />
     <Compile Include="MaxAggregation.cs" />
     <Compile Include="MinAggregation.cs" />

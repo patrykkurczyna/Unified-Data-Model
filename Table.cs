@@ -5,17 +5,18 @@ using System.Text;
 
 namespace UDM
 {
+    [Serializable]
     public class Table
     {
         protected List<Column> columns;
         protected string _name;
         protected Table previous;
-        public string Name
+        public virtual string Name
         {
             get { return _name; }
         }
 
-        public List<Column> Columns
+        public virtual List<Column> Columns
         {
             get { return columns; }
             set { columns = value; }
@@ -36,12 +37,12 @@ namespace UDM
             this.previous = previous;
         }
 
-        public void AddColumn(Column column)
+        public virtual void AddColumn(Column column)
         {
             this.columns.Add(column);
         }
 
-        public bool RemoveColumn(Column column)
+        public virtual bool RemoveColumn(Column column)
         {
             return columns.Remove(column);
         }
@@ -57,16 +58,16 @@ namespace UDM
             return table;
         }
 
-        public Table Execute(Command command)
+        public virtual Table Execute(Command command)
         {
             return command.Execute(this);
         }
 
-        public Table Undo()
+        public virtual Table Undo()
         {
             return previous;
         }
-        public Table Normalize()
+        public virtual Table Normalize()
         {
             return null;
         }

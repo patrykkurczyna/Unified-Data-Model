@@ -45,8 +45,6 @@ namespace UDM
                 throw new AllColumnsShouldBeSelectedForGroupingException();
 
             List<Column> newColumns = new List<Column>();
-
-<<<<<<< HEAD
             //List<Column> newAggregatedColumns = new List<Column>();
 
             
@@ -77,8 +75,8 @@ namespace UDM
 
                 
             }
-=======
-            List<Column> newAggregatedColumns = new List<Column>();
+
+            //List<Column> newAggregatedColumns = new List<Column>();
 
             
 
@@ -103,7 +101,6 @@ namespace UDM
             //        newAggregatedColumns.Add(newColumn);
             //    }
             //}
->>>>>>> origin/master
 
             
 

@@ -75,10 +75,10 @@ namespace TestUDM
             var cell2 = new Mock<Cell>();
             var cell3 = new Mock<Cell>();
             var cell4 = new Mock<Cell>();
-            cell1.Setup(foo => foo.Content).Returns(0.6);
-            cell2.Setup(foo => foo.Content).Returns(3);
-            cell3.Setup(foo => foo.Content).Returns(0.6);
-            cell4.Setup(foo => foo.Content).Returns(5);
+            cell1.Setup(foo => foo.Content).Returns((double)0.6);
+            cell2.Setup(foo => foo.Content).Returns((double)3);
+            cell3.Setup(foo => foo.Content).Returns((double)0.6);
+            cell4.Setup(foo => foo.Content).Returns((double)5);
             List<Cell> cells = new List<Cell>();
             cells.Add(cell1.Object);
             cells.Add(cell2.Object);

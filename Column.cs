@@ -5,22 +5,29 @@ using System.Text;
 
 namespace UDM
 {
+    [Serializable]
     public class Column
     {
         protected List<Cell> cells;
         protected string _name;
         protected DataType _type;
-        public DataType Type
+        public Column()
+        {
+            cells = new List<Cell>();
+            _name = "Untitled";
+            _type = DataType.IntegerFact;
+        }
+        public virtual DataType Type
         {
             get { return _type; }
         }
-        public string Name
+        public virtual string Name
         {
             get { return _name; }
             set { _name = value; }
         }
 
-        public List<Cell> Cells
+        public virtual List<Cell> Cells
         {
             get { return cells; }
             set { cells = value; }
@@ -34,12 +41,12 @@ namespace UDM
             this._type = type;
         }
 
-        public void AddCell(Cell cell)
+        public virtual void AddCell(Cell cell)
         {
             this.cells.Add(cell);
         }
 
-        public bool RemoveCell(Cell cell)
+        public virtual bool RemoveCell(Cell cell)
         {
             return cells.Remove(cell);
         }
