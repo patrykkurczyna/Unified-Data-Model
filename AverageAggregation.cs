@@ -14,6 +14,10 @@ namespace UDM
             {
                 try
                 {
+                    sum += (int)cell.Content;
+                }
+                catch (InvalidCastException e)
+                {
                     sum += (double)cell.Content;
                 }
                 catch (BadColumnForThisOperationException)

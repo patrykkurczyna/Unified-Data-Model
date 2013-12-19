@@ -86,7 +86,7 @@ namespace UDM
 
                 foreach (Object content in map.Keys)
                 {
-                    groupedTableColumns[0].AddCell(new Cell(content));
+                    
                     for (int i = 1; i < n+1; i++)
                     {
                         Column column = aggregatedColumns.Keys.ToList<Column>()[i-1];

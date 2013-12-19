@@ -52,7 +52,7 @@ namespace UDM
             Console.WriteLine(first_table);
 
             Dictionary<Column,Aggregation> dict = new Dictionary<Column,Aggregation>();
-            dict.Add(l,new CountAggregation());
+            dict.Add(l,new SumAggregation());
             Command cmd = new GroupCommand(new List<Column> { s }, dict);
             Console.WriteLine(first_table.Execute(cmd));
 
@@ -61,8 +61,8 @@ namespace UDM
             Cell s31 = new Cell("Hamburg");
 
 
-            Cell l11 = new Cell(70.3);
-            Cell l21 = new Cell((double)65);
+            Cell l11 = new Cell(70.5);
+            Cell l21 = new Cell(65);
             Cell l31 = new Cell((double)15);
 
             Column ss = new Column("Miasto", DataType.StringDimension);
@@ -105,12 +105,14 @@ namespace UDM
             cells.Add(l21);
             cells.Add(l31);
 
-            /*Console.WriteLine((double)(new SumAggregation(cells)).GetAggregatedValue());
-            Console.WriteLine((double)(new MaxAggregation(cells)).GetAggregatedValue());
-            Console.WriteLine((int)(new CountAggregation(cells)).GetAggregatedValue());
-            Console.WriteLine((double)(new MinAggregation(cells)).GetAggregatedValue());
-            Console.WriteLine((double)(new AverageAggregation(cells)).GetAggregatedValue());*/
-            
+            Console.WriteLine((double)(new SumAggregation()).GetAggregatedValue(cells));
+            //Console.WriteLine((double)(new MaxAggregation()).GetAggregatedValue(cells));
+            //Console.WriteLine((int)(new CountAggregation()).GetAggregatedValue(cells));
+            //Console.WriteLine((double)(new MinAggregation()).GetAggregatedValue(cells));
+            //Console.WriteLine((double)(new AverageAggregation()).GetAggregatedValue(cells));
+
+            object liczba = 15;
+            Console.WriteLine(liczba is int);
 
             Console.ReadKey();
         }

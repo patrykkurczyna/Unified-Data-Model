@@ -25,7 +25,13 @@ namespace UDM
 
         public Cell(Object content)
         {
-            this._content = content;
+            if (content is int)
+            {
+                int i = (int)content;
+                this._content = (double)i;
+            }
+            else
+                this._content = content;
         }
 
         public override String ToString()
