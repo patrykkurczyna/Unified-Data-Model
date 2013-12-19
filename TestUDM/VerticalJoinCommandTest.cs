@@ -95,6 +95,7 @@ namespace TestUDM
             list3.Add(cell5.Object);
             list3.Add(cell6.Object);
             list4.Add(cell7.Object);
+            list4.Add(cell8.Object);
 
             var column1 = new Mock<Column>();
             var column2 = new Mock<Column>();
@@ -118,7 +119,7 @@ namespace TestUDM
             table.Setup(foo => foo.Columns).Returns(columns1);
             table2.Setup(foo => foo.Columns).Returns(columns2);
 
-            VerticalJoinCommand target = new VerticalJoinCommand(table2.Object);
+            VerticalJoinCommand target = new VerticalJoinCommand(table.Object);
 
             var table3 = new Mock<Table>(); //taką tabelę będziemy chcieli uzyskać
 
@@ -141,7 +142,7 @@ namespace TestUDM
             table3.Setup(foo => foo.Columns).Returns(columns3); //gotowy mock tabeli
             
 
-            Assert.AreEqual(table3.Object.Columns, target.Execute(table.Object));
+            CollectionAssert.AreEqual(table3.Object.Columns, target.Execute(table2.Object).Columns);
 
         }
     }

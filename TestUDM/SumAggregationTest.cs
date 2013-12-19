@@ -77,13 +77,13 @@ namespace TestUDM
             for (int i = 0; i < 10; i++)
             {
                 var cell = new Mock<Cell>();
-                cell.Setup(foo => foo.Content).Returns(i);
+                cell.Setup(foo => foo.Content).Returns((double)i);
                 cells.Add(cell.Object);
             }
-            SumAggregation target = new SumAggregation(cells);
-            double expected = 49;
+            SumAggregation target = new SumAggregation();
+            double expected = 45;
             double actual;
-            actual = (double)target.GetAggregatedValue();
+            actual = (double)target.GetAggregatedValue(cells);
             Assert.AreEqual(expected, actual);
         }
     }

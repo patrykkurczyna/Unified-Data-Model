@@ -8,6 +8,6 @@ namespace UDM
     public abstract class Aggregation
     {
         protected List<Cell> cells;
-        public abstract Object GetAggregatedValue();
+        public abstract Object GetAggregatedValue(List<Cell> cells);
     }
 }

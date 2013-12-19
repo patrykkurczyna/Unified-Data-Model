@@ -84,15 +84,15 @@ namespace TestUDM
             cells.Add(cell1.Object);
             cells.Add(cell2.Object);
             cells.Add(cell3.Object);
-            MinAggregation target = new MinAggregation(cells);
+            MinAggregation target = new MinAggregation();
             double expected = 0.3;
             double actual;
-            actual = (double)target.GetAggregatedValue();
+            actual = (double)target.GetAggregatedValue(cells);
             Assert.AreEqual(expected, actual);
 
             cells.Add(cell4.Object);
             expected = 0.1;
-            actual = (double)target.GetAggregatedValue();
+            actual = (double)target.GetAggregatedValue(cells);
             Assert.AreEqual(expected, actual);
         }
 

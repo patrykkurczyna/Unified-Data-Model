@@ -10,17 +10,20 @@ namespace UDM
         static void Main(string[] args)
         {
             Cell s1 = new Cell("Kraków");
-            Cell s2 = new Cell("Gdańsk");
-            Cell s3 = new Cell("Wrocław");
-            Cell s4 = new Cell("Poznań");
-            Cell s5 = new Cell("Warszawa");
-
+            Cell s2 = new Cell("Kraków");
+            Cell s3 = new Cell("Gdańsk");
+            Cell s4 = new Cell("Gdańsk");
+            Cell s5 = new Cell("Wrocław");
+            Cell s6 = new Cell("Poznań");
+            Cell s7 = new Cell("Warszawa");
 
             Cell l1 = new Cell(10);
             Cell l2 = new Cell(20);
-            Cell l3 = new Cell(30);
-            Cell l4 = new Cell(40);
-            Cell l5 = new Cell(50);
+            Cell l3 = new Cell(20);
+            Cell l4 = new Cell(30);
+            Cell l5 = new Cell(40);
+            Cell l6 = new Cell(50);
+            Cell l7 = new Cell(60);
 
             Column s = new Column("Miasto", DataType.StringDimension);
             s.AddCell(s1);
@@ -28,6 +31,8 @@ namespace UDM
             s.AddCell(s3);
             s.AddCell(s4);
             s.AddCell(s5);
+            s.AddCell(s6);
+            s.AddCell(s7);
             
 
             Column l = new Column("Sprzedaż", DataType.FloatFact);
@@ -36,12 +41,20 @@ namespace UDM
             l.AddCell(l3);
             l.AddCell(l4);
             l.AddCell(l5);
+            l.AddCell(l6);
+            l.AddCell(l7);
 
             List<Column> mylist = new List<Column>();
             mylist.Add(s);
             mylist.Add(l);
 
             Table first_table = new Table("Dane1", null, mylist);
+            Console.WriteLine(first_table);
+
+            Dictionary<Column,Aggregation> dict = new Dictionary<Column,Aggregation>();
+            dict.Add(l,new CountAggregation());
+            Command cmd = new GroupCommand(new List<Column> { s }, dict);
+            first_table.Execute(cmd);
 
             Cell s11 = new Cell("Berlin");
             Cell s21 = new Cell("Kolonia");
@@ -92,12 +105,13 @@ namespace UDM
             cells.Add(l21);
             cells.Add(l31);
 
-            Console.WriteLine((double)(new SumAggregation(cells)).GetAggregatedValue());
+            /*Console.WriteLine((double)(new SumAggregation(cells)).GetAggregatedValue());
             Console.WriteLine((double)(new MaxAggregation(cells)).GetAggregatedValue());
             Console.WriteLine((int)(new CountAggregation(cells)).GetAggregatedValue());
             Console.WriteLine((double)(new MinAggregation(cells)).GetAggregatedValue());
-            Console.WriteLine((double)(new AverageAggregation(cells)).GetAggregatedValue());
+            Console.WriteLine((double)(new AverageAggregation(cells)).GetAggregatedValue());*/
             
+
             Console.ReadKey();
         }
     }

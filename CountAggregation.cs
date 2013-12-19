@@ -7,14 +7,13 @@ namespace UDM
 {
     public class CountAggregation : Aggregation
     {
-        public override Object GetAggregatedValue()
+        public override Object GetAggregatedValue(List<Cell> cells)
         {
             return this.cells.Count;
         }
 
-        public CountAggregation(List<Cell> cells)
+        public CountAggregation()
         {
-            this.cells = cells;
         }
     }
 }

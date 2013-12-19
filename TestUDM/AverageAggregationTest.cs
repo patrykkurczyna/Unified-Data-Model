@@ -81,15 +81,15 @@ namespace TestUDM
             List<Cell> cells = new List<Cell>();
             cells.Add(cell1.Object);
             cells.Add(cell2.Object);
-            AverageAggregation target = new AverageAggregation(cells);
+            AverageAggregation target = new AverageAggregation();
             double expected = 0.5;
             double actual;
-            actual = (double)target.GetAggregatedValue();
+            actual = (double)target.GetAggregatedValue(cells);
             Assert.AreEqual(expected, actual);
 
             cells.Add(cell3.Object);
             expected = 1;
-            actual = (double)target.GetAggregatedValue();
+            actual = (double)target.GetAggregatedValue(cells);
             Assert.AreEqual(expected, actual);
             
         }

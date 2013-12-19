@@ -96,8 +96,7 @@ namespace TestUDM
             selectedIndeces.Add(2);
             target = new SelectCommand(selectedIndeces);
             receivedColumns = target.Execute(table.Object).Columns;
-            Assert.AreEqual(table2.Object.Columns, receivedColumns);
-
+            CollectionAssert.AreEqual(table2.Object.Columns, receivedColumns);
         }
     }
 }

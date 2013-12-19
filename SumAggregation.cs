@@ -7,7 +7,7 @@ namespace UDM
 {
     public class SumAggregation : Aggregation
     {
-        public override Object GetAggregatedValue()
+        public override Object GetAggregatedValue(List<Cell> cells)
         {
             double sum = 0.0;
             foreach (Cell cell in this.cells)
@@ -25,9 +25,8 @@ namespace UDM
             return sum;
         }
 
-        public SumAggregation(List<Cell> cells)
+        public SumAggregation()
         {
-            this.cells = cells;
         }
     }
 }

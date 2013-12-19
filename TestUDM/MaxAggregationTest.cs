@@ -83,15 +83,15 @@ namespace TestUDM
             cells.Add(cell1.Object);
             cells.Add(cell2.Object);
             cells.Add(cell3.Object);
-            MaxAggregation target = new MaxAggregation(cells);
+            MaxAggregation target = new MaxAggregation();
             double expected = 3;
             double actual;
-            actual = (double)target.GetAggregatedValue();
+            actual = (double)target.GetAggregatedValue(cells);
             Assert.AreEqual(expected, actual);
 
             cells.Add(cell4.Object);
             expected = 5;
-            actual = (double)target.GetAggregatedValue();
+            actual = (double)target.GetAggregatedValue(cells);
             Assert.AreEqual(expected, actual);
         }
     }

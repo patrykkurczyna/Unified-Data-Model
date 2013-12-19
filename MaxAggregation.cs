@@ -7,7 +7,7 @@ namespace UDM
 {   
     public class MaxAggregation : Aggregation
     {
-        public override Object GetAggregatedValue()
+        public override Object GetAggregatedValue(List<Cell> cells)
         {
             double max = Double.MinValue;
             foreach(Cell cell in this.cells)
@@ -24,9 +24,8 @@ namespace UDM
             return max;
         }
 
-        public MaxAggregation(List<Cell> cells)
+        public MaxAggregation()
         {
-            this.cells = cells;
         }
     }
 }
