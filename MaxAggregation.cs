@@ -10,7 +10,7 @@ namespace UDM
         public override Object GetAggregatedValue(List<Cell> cells)
         {
             double max = Double.MinValue;
-            foreach(Cell cell in this.cells)
+            foreach(Cell cell in cells)
             {
                 try
                 {

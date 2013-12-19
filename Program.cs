@@ -54,7 +54,7 @@ namespace UDM
             Dictionary<Column,Aggregation> dict = new Dictionary<Column,Aggregation>();
             dict.Add(l,new CountAggregation());
             Command cmd = new GroupCommand(new List<Column> { s }, dict);
-            first_table.Execute(cmd);
+            Console.WriteLine(first_table.Execute(cmd));
 
             Cell s11 = new Cell("Berlin");
             Cell s21 = new Cell("Kolonia");

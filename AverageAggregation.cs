@@ -10,7 +10,7 @@ namespace UDM
         public override Object GetAggregatedValue(List<Cell> cells)
         {
             double sum = 0.0;
-            foreach (Cell cell in this.cells)
+            foreach (Cell cell in cells)
             {
                 try
                 {
@@ -21,7 +21,7 @@ namespace UDM
                     throw;
                 }
             }
-            return sum / this.cells.Count;
+            return sum / cells.Count;
         }
 
         public AverageAggregation()

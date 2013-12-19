@@ -72,13 +72,34 @@ namespace UDM
                     }
                     
                 }
-                
-     
+                int n = aggregatedColumns.Count;
+                List<Column> groupedTableColumns = new List<Column>();
+                List<Cell> cells = map.Keys.Select(content => new Cell(content)).ToList();
+                groupedTableColumns.Add(new Column(gCol.Name,gCol.Type,cells));
+                for (int i = 0; i < n; i++)
+                {
+                    Column column = aggregatedColumns.Keys.ToList<Column>()[i];
+                    groupedTableColumns.Add(new Column(column.Name, column.Type));
+                }
+                //List<Cell> gCells = map.Keys.Select(content => new Cell(content)).ToList();
+                //groupedTableColumns.Add(new Column(gCol.Name, gCol.Type, gCells));
 
+                foreach (Object content in map.Keys)
+                {
+                    groupedTableColumns[0].AddCell(new Cell(content));
+                    for (int i = 1; i < n+1; i++)
+                    {
+                        Column column = aggregatedColumns.Keys.ToList<Column>()[i-1];
+                        Aggregation aggr = aggregatedColumns[column];
+                        groupedTableColumns[i].AddCell(new Cell(aggr.GetAggregatedValue(map[content][i-1].Cells)));
+                    }
+                }
+
+                table = new Table(table.Name, table, groupedTableColumns);
                 
             }
 
-            return new Table("jan",null, new List<Column>());
+            return table;
         }
     }
 }
