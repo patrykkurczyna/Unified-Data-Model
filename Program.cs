@@ -9,6 +9,10 @@ namespace UDM
     {
         static void Main(string[] args)
         {
+
+            Cell c1 = new Cell(2011);
+            Cell c2 = new Cell(2012);
+            Cell c3 = new Cell(2013);
             Cell s1 = new Cell("Kraków");
             Cell s2 = new Cell("Kraków");
             Cell s3 = new Cell("Gdańsk");
@@ -16,14 +20,31 @@ namespace UDM
             Cell s5 = new Cell("Wrocław");
             Cell s6 = new Cell("Poznań");
             Cell s7 = new Cell("Warszawa");
+            Cell s8 = new Cell("Gdańsk");
+            Cell s9 = new Cell("Rzym");
 
-            Cell l1 = new Cell(10);
+            Cell l1 = new Cell(15);
             Cell l2 = new Cell(20);
             Cell l3 = new Cell(20);
             Cell l4 = new Cell(30);
             Cell l5 = new Cell(40);
             Cell l6 = new Cell(50);
             Cell l7 = new Cell(60);
+            Cell l8 = new Cell(80);
+            Cell l9 = new Cell(11);
+
+            Cell p1 = new Cell(2);
+
+            Column c = new Column("Rok", DataType.StringDimension);
+            c.AddCell(c1);
+            c.AddCell(c1);
+            c.AddCell(c2);
+            c.AddCell(c3);
+            c.AddCell(c2);
+            c.AddCell(c3);
+            c.AddCell(c1);
+            c.AddCell(c1);
+            //c.AddCell(c2);
 
             Column s = new Column("Miasto", DataType.StringDimension);
             s.AddCell(s1);
@@ -33,7 +54,7 @@ namespace UDM
             s.AddCell(s5);
             s.AddCell(s6);
             s.AddCell(s7);
-            
+            s.AddCell(s8);
 
             Column l = new Column("Sprzedaż", DataType.FloatFact);
             l.AddCell(l1);
@@ -43,18 +64,43 @@ namespace UDM
             l.AddCell(l5);
             l.AddCell(l6);
             l.AddCell(l7);
+            l.AddCell(l8);
+
+
+            Column p = new Column("Coś", DataType.IntegerFact);
+            p.AddCell(p1);
+            p.AddCell(p1);
+            p.AddCell(p1);
+            p.AddCell(p1);
+            p.AddCell(p1);
+            p.AddCell(p1);
+            p.AddCell(p1);
+            p.AddCell(p1);
 
             List<Column> mylist = new List<Column>();
+            //mylist.Add(c);
             mylist.Add(s);
             mylist.Add(l);
+            mylist.Add(p);
 
             Table first_table = new Table("Dane1", null, mylist);
             Console.WriteLine(first_table);
 
             Dictionary<Column,Aggregation> dict = new Dictionary<Column,Aggregation>();
-            dict.Add(l,new SumAggregation());
+            dict.Add(l,new AverageAggregation());
+            dict.Add(p, new SumAggregation());
             Command cmd = new GroupCommand(new List<Column> { s }, dict);
             Console.WriteLine(first_table.Execute(cmd));
+            dict[l] = new CountAggregation();
+            Console.WriteLine(first_table.Execute(cmd));
+
+            mylist = new List<Column>();
+            mylist.Add(c);
+            mylist.Add(s);
+            mylist.Add(l);
+            mylist.Add(p);
+            Table second = new Table("Tabeleczka", null, mylist);
+            Console.WriteLine(second);
 
             Cell s11 = new Cell("Berlin");
             Cell s21 = new Cell("Kolonia");
@@ -79,7 +125,21 @@ namespace UDM
             mylist1.Add(ss);
             mylist1.Add(ll);
 
-            Table second_table = new Table("Dane2", null, mylist1);
+            List<Object> li1 = new List<Object>();
+            li1.Add("jeden");
+            li1.Add("dwa");
+
+            List<Object> li2 = new List<Object>();
+            li2.Add("jeden");
+            li2.Add("dwa");
+            Console.WriteLine(li1.Equals(li2));
+            Object st1 = "la";
+            Object st2 = "be";
+            Console.WriteLine(st1.Equals(st2));
+            Console.WriteLine(st1.ToString());
+            Console.WriteLine(st2.ToString());
+            
+            //Table second_table = new Table("Dane2", null, mylist1);
 
 
 
@@ -100,19 +160,19 @@ namespace UDM
             //    throw;
             //}
 
-            List<Cell> cells = new List<Cell>();
-            cells.Add(l11);
-            cells.Add(l21);
-            cells.Add(l31);
+            //List<Cell> cells = new List<Cell>();
+            //cells.Add(l11);
+            //cells.Add(l21);
+            //cells.Add(l31);
 
-            Console.WriteLine((double)(new SumAggregation()).GetAggregatedValue(cells));
+            //Console.WriteLine((double)(new SumAggregation()).GetAggregatedValue(cells));
             //Console.WriteLine((double)(new MaxAggregation()).GetAggregatedValue(cells));
             //Console.WriteLine((int)(new CountAggregation()).GetAggregatedValue(cells));
             //Console.WriteLine((double)(new MinAggregation()).GetAggregatedValue(cells));
             //Console.WriteLine((double)(new AverageAggregation()).GetAggregatedValue(cells));
 
-            object liczba = 15;
-            Console.WriteLine(liczba is int);
+            //object liczba = 15;
+            //Console.WriteLine(liczba is int);
 
             Console.ReadKey();
         }
