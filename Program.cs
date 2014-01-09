@@ -125,7 +125,7 @@ namespace UDM
             mylist1.Add(ss);
             mylist1.Add(ll);
 
-            List<Object> li1 = new List<Object>();
+            /**List<Object> li1 = new List<Object>();
             li1.Add("jeden");
             li1.Add("dwa");
 
@@ -137,7 +137,7 @@ namespace UDM
             Object st2 = "be";
             Console.WriteLine(st1.Equals(st2));
             Console.WriteLine(st1.ToString());
-            Console.WriteLine(st2.ToString());
+            Console.WriteLine(st2.ToString());**/
             
             //Table second_table = new Table("Dane2", null, mylist1);
 
