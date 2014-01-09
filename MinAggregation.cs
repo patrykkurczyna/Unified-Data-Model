@@ -27,5 +27,10 @@ namespace UDM
         public MinAggregation()
         {
         }
+
+        public override string ToString()
+        {
+            return "min";
+        }
     }
 }

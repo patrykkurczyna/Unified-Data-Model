@@ -27,5 +27,10 @@ namespace UDM
         public MaxAggregation()
         {
         }
+
+        public override string ToString()
+        {
+            return "max";
+        }
     }
 }

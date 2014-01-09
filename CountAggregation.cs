@@ -15,5 +15,10 @@ namespace UDM
         public CountAggregation()
         {
         }
+
+        public override string ToString()
+        {
+            return "ilość";
+        }
     }
 }

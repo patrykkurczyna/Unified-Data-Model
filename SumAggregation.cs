@@ -30,5 +30,10 @@ namespace UDM
         public SumAggregation()
         {
         }
+
+        public override string ToString()
+        {
+            return "suma";
+        }
     }
 }

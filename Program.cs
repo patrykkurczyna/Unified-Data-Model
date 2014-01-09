@@ -19,7 +19,7 @@ namespace UDM
             Cell s4 = new Cell("Gdańsk");
             Cell s5 = new Cell("Wrocław");
             Cell s6 = new Cell("Poznań");
-            Cell s7 = new Cell("Warszawa");
+            Cell s7 = new Cell("Wawa");
             Cell s8 = new Cell("Gdańsk");
             Cell s9 = new Cell("Rzym");
 
@@ -84,15 +84,18 @@ namespace UDM
             mylist.Add(p);
 
             Table first_table = new Table("Dane1", null, mylist);
-            Console.WriteLine(first_table);
+            //Console.WriteLine(first_table);
+            first_table.print();
 
-            Dictionary<Column,Aggregation> dict = new Dictionary<Column,Aggregation>();
-            dict.Add(l,new AverageAggregation());
+            Dictionary<Column, Aggregation> dict = new Dictionary<Column, Aggregation>();
+            dict.Add(l, new AverageAggregation());
             dict.Add(p, new SumAggregation());
             Command cmd = new GroupCommand(new List<Column> { s }, dict);
-            Console.WriteLine(first_table.Execute(cmd));
+            first_table.Execute(cmd).print();
+            //Console.WriteLine(first_table.Execute(cmd));
             dict[l] = new CountAggregation();
-            Console.WriteLine(first_table.Execute(cmd));
+            //Console.WriteLine(first_table.Execute(cmd));
+            first_table.Execute(cmd).print();
 
             mylist = new List<Column>();
             mylist.Add(c);
@@ -100,7 +103,16 @@ namespace UDM
             mylist.Add(l);
             mylist.Add(p);
             Table second = new Table("Tabeleczka", null, mylist);
-            Console.WriteLine(second);
+            //Console.WriteLine(second);
+            second.print();
+
+            dict = new Dictionary<Column, Aggregation>();
+            dict.Add(l, new AverageAggregation());
+            dict.Add(p, new SumAggregation());
+            cmd = new GroupCommand(new List<Column> { c, s }, dict);
+            //Console.WriteLine(second.Execute(cmd));
+            second.Execute(cmd).print();
+
 
             Cell s11 = new Cell("Berlin");
             Cell s21 = new Cell("Kolonia");
@@ -125,26 +137,13 @@ namespace UDM
             mylist1.Add(ss);
             mylist1.Add(ll);
 
-            List<Object> li1 = new List<Object>();
-            li1.Add("jeden");
-            li1.Add("dwa");
 
-            List<Object> li2 = new List<Object>();
-            li2.Add("jeden");
-            li2.Add("dwa");
-            Console.WriteLine(li1.Equals(li2));
-            Object st1 = "la";
-            Object st2 = "be";
-            Console.WriteLine(st1.Equals(st2));
-            Console.WriteLine(st1.ToString());
-            Console.WriteLine(st2.ToString());
-            
             //Table second_table = new Table("Dane2", null, mylist1);
 
 
 
             //Console.WriteLine(first_table);
-            
+
             //Console.WriteLine(first_table.Execute(new SelectCommand(new List<int>{0})));
             //Console.WriteLine(first_table.Execute(new SelectCommand(new List<int> {1})));
 

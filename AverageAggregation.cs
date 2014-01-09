@@ -31,5 +31,10 @@ namespace UDM
         public AverageAggregation()
         {
         }
+
+        public override string ToString()
+        {
+            return "średnia";
+        }
     }
 }

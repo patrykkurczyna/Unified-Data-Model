@@ -71,5 +71,20 @@ namespace UDM
         {
             return null;
         }
+        public virtual void print()
+        {
+            Console.WriteLine(Name);
+            foreach (Column column in columns) Console.Write(column.Name + String.Format("\t\t"));
+            Console.WriteLine();
+            for (int i = 0; i < columns[0].Cells.Count; i++)
+            {
+                for (int j = 0; j < columns.Count; j++)
+                {
+                    Console.Write(columns[j].Cells[i].Content + String.Format("\t\t"));
+                }
+                Console.Write(String.Format("\n"));
+            }
+            Console.WriteLine();
+        }
     }
 }
