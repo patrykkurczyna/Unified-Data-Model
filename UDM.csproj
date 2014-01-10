@@ -53,6 +53,7 @@
     <Compile Include="Aggregation.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="ComputationOfOneColumnCommand.cs" />
+    <Compile Include="ComputationOfTwoColumnsCommand.cs" />
     <Compile Include="CountAggregation.cs" />
     <Compile Include="DataType.cs" />
     <Compile Include="GroupCommand.cs" />

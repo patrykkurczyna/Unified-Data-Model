@@ -29,7 +29,7 @@ namespace UDM
                 List<Column> newColumnList = new List<Column>();
                 foreach (Column col in table.Columns)
                 {
-                    Column newCol = new Column();
+                    Column newCol = new Column(col.Name,col.Type);
                     foreach (Cell cell in col.Cells)
                     {
                         newCol.AddCell(new Cell(cell.Content));

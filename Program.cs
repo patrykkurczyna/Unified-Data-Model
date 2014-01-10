@@ -154,8 +154,12 @@ namespace UDM
 
             first_table.Execute(new SelectCommand(new List<int>{0})).print();
             first_table.Execute(new SelectCommand(new List<int>{1})).print();
+                       
+            first_table.Execute(new FilterCommand(first_table.Columns[1],cellContent => (double)cellContent > 20)).print();
 
-            Table result = first_table.Execute(new FilterCommand(first_table.Columns[1],cellContent => (double)cellContent > 20));
+            first_table.Execute(new ComputationOfTwoColumnsCommand(first_table.Columns[1], first_table.Columns[2], (cellContent, cell2Content) => (double)cellContent + (double)cell2Content)).print();
+
+            Table result = first_table.Execute(new ComputationOfOneColumnCommand(first_table.Columns[1], cellContent => (double)cellContent * 2));
             Table modified = new Table(result.Name,first_table,result.Columns);
             modified.print();
             modified.Undo().print();
