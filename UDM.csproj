@@ -47,10 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AverageAggregation.cs" />
+    <Compile Include="BadColumnForComputationException.cs" />
     <Compile Include="BadColumnForThisOperationException.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="Aggregation.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="ComputationOfOneColumnCommand.cs" />
     <Compile Include="CountAggregation.cs" />
     <Compile Include="DataType.cs" />
     <Compile Include="GroupCommand.cs" />
