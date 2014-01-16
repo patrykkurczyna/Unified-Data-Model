@@ -96,7 +96,7 @@ namespace UDM
                 }
 
             }
-            
+
             List<Column> groupedTableColumns = new List<Column>();
             List<Cell> cells = map.Keys.Select(content => new Cell(content)).ToList();
 
@@ -116,7 +116,7 @@ namespace UDM
             for (int i = 0; i < m; i++)
             {
                 Column column = aggregatedColumns.Keys.ToList<Column>()[i];
-                string name = column.Name+" - "+aggregatedColumns[column].ToString();
+                string name = column.Name + " - " + aggregatedColumns[column].ToString();
                 groupedTableColumns.Add(new Column(name, column.Type));
             }
             //List<Cell> gCells = map.Keys.Select(content => new Cell(content)).ToList();
@@ -130,7 +130,7 @@ namespace UDM
                 {
                     Column column = aggregatedColumns.Keys.ToList<Column>()[i - 1];
                     Aggregation aggr = aggregatedColumns[column];
-                    groupedTableColumns[i+k-1].AddCell(new Cell(aggr.GetAggregatedValue(map[content][i - 1].Cells)));
+                    groupedTableColumns[i + k - 1].AddCell(new Cell(aggr.GetAggregatedValue(map[content][i - 1].Cells)));
                 }
             }
 

@@ -88,7 +88,7 @@ namespace TestUDM
             table.Setup(foo => foo.Columns).Returns(originalColumns);
             table2.Setup(foo => foo.Columns).Returns(selectedColumns);
             List<Column> receivedColumns = target.Execute(table.Object).Columns;
-            Assert.AreEqual(table2.Object.Columns, receivedColumns);
+            CollectionAssert.AreEqual(table2.Object.Columns, receivedColumns);
             
             //po indeksach
             List<int> selectedIndeces = new List<int>();

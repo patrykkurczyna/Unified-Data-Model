@@ -67,8 +67,6 @@
     <Compile Include="SumAggregationTest.cs" />
     <Compile Include="TableTest.cs" />
     <Compile Include="VerticalJoinCommandTest.cs" />
-    <Compile Include="VerticalJoinCommand_ColumnTypeMismatchExceptionTest.cs" />
-    <Compile Include="VerticalJoinCommand_IncoherentColumnCountExceptionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UDM.csproj">

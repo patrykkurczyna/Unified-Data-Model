@@ -89,7 +89,7 @@ namespace TestUDM
             cellsCopy.Add(cell3.Object);
             column.AddCell(cell3.Object);
 
-            CollectionAssert.Equals(cellsCopy, column.Cells);
+            CollectionAssert.AreEqual(cellsCopy, column.Cells);
         }
 
         /// <summary>
@@ -109,12 +109,12 @@ namespace TestUDM
             Column column = new Column("Kolumna", DataType.IntegerFact, cells);
 
             List<Cell> cellsCopy = new List<Cell>();
-            //cellsCopy = cells.Select(cell => cell).ToList();
+            cellsCopy = cells.Select(cell => cell).ToList();
 
             cellsCopy.Remove(cell3.Object);
-            //column.RemoveCell(cell3.Object);
+            column.RemoveCell(cell3.Object);
 
-            CollectionAssert.Equals(cellsCopy,null);
+            CollectionAssert.AreEqual(cellsCopy,column.Cells);
         }
 
         /// <summary>

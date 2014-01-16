@@ -96,16 +96,16 @@ namespace TestUDM
         [TestMethod()]
         public void ExecuteTest()
         {
-            string _name = string.Empty; // TODO: Initialize to an appropriate value
-            Table previous = null; // TODO: Initialize to an appropriate value
-            List<Column> columns = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
-            Command command = null; // TODO: Initialize to an appropriate value
-            Table expected = null; // TODO: Initialize to an appropriate value
-            Table actual;
-            actual = target.Execute(command);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            var command = new Mock<Command>();
+            var result = new Mock<Table>();
+            
+            command.Setup(foo => foo.Execute(It.IsAny<Table>())).Returns(result.Object);
+
+            Table table = new Table("Nazwa", null);
+            Table table2 = table.Execute(command.Object);
+
+            Assert.AreEqual(table2, result.Object);
+
         }
 
         /// <summary>
@@ -139,15 +139,15 @@ namespace TestUDM
             columns.Add(column2.Object);
             columns.Add(column3.Object);
 
-            Table table = new Table("Tabela", null, columns);
+            Table table = new Table("Table", null, columns);
 
-            List<Column> columnsCopy = null;// new List<Column>();
-            //columnsCopy = columns.Select(column => column).ToList();
+            List<Column> columnsCopy = new List<Column>();
+            columnsCopy = columns.Select(column => column).ToList();
 
-            //columnsCopy.Remove(column3.Object);
-            //table.AddColumn(column3.Object);
+            columnsCopy.Remove(column3.Object);
+            table.RemoveColumn(column3.Object);
 
-            CollectionAssert.Equals(columnsCopy, table.Columns);
+            CollectionAssert.AreEqual(columnsCopy, table.Columns);
         }
 
         /// <summary>
@@ -156,15 +156,28 @@ namespace TestUDM
         [TestMethod()]
         public void ToStringTest()
         {
-            string _name = string.Empty; // TODO: Initialize to an appropriate value
-            Table previous = null; // TODO: Initialize to an appropriate value
-            List<Column> columns = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            actual = target.ToString();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            var column1 = new Mock<Column>();
+            var column2 = new Mock<Column>();
+            var column3 = new Mock<Column>();
+            column1.Setup(foo => foo.ToString()).Returns("c1");
+            column2.Setup(foo => foo.ToString()).Returns("c2");
+            column3.Setup(foo => foo.ToString()).Returns("c3");
+
+            List<Column> columns = new List<Column>();
+
+            columns.Add(column1.Object);
+            columns.Add(column2.Object);
+            columns.Add(column3.Object);
+
+            string tableString = "Nazwa\n";
+            foreach (Column column in columns)
+            {
+                tableString += column.ToString();
+                tableString += "\n";
+            }
+
+            Table table = new Table("Nazwa", null, columns);
+            Assert.AreEqual(table.ToString(), tableString);
         }
 
         /// <summary>
@@ -173,15 +186,9 @@ namespace TestUDM
         [TestMethod()]
         public void UndoTest()
         {
-            string _name = string.Empty; // TODO: Initialize to an appropriate value
-            Table previous = null; // TODO: Initialize to an appropriate value
-            List<Column> columns = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
-            Table expected = null; // TODO: Initialize to an appropriate value
-            Table actual;
-            actual = target.Undo();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Table table1 = new Table("table1", null);
+            Table table2 = new Table("table2", table1);
+            Assert.AreEqual(table1, table2.Undo());
         }
 
         /// <summary>
@@ -190,16 +197,17 @@ namespace TestUDM
         [TestMethod()]
         public void ColumnsTest()
         {
-            string _name = string.Empty; // TODO: Initialize to an appropriate value
-            Table previous = null; // TODO: Initialize to an appropriate value
-            List<Column> columns = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
-            List<Column> expected = null; // TODO: Initialize to an appropriate value
-            List<Column> actual;
-            target.Columns = expected;
-            actual = target.Columns;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            var column1 = new Mock<Column>();
+            var column2 = new Mock<Column>();
+            var column3 = new Mock<Column>();
+            List<Column> columns = new List<Column>();
+            columns.Add(column1.Object);
+            columns.Add(column2.Object);
+            columns.Add(column3.Object);
+
+            Table table = new Table("Table", null, columns);
+
+            CollectionAssert.AreEqual(columns, table.Columns);
         }
 
         /// <summary>
@@ -208,13 +216,8 @@ namespace TestUDM
         [TestMethod()]
         public void NameTest()
         {
-            string _name = string.Empty; // TODO: Initialize to an appropriate value
-            Table previous = null; // TODO: Initialize to an appropriate value
-            List<Column> columns = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
-            string actual;
-            actual = target.Name;
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Table table = new Table("Nazwa", null);
+            Assert.AreEqual("Nazwa", table.Name);
         }
     }
 }

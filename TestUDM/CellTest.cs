@@ -90,9 +90,8 @@ namespace TestUDM
         public void ContentTest()
         {
             Cell target = new Cell(5);
-            object expected = 5;
+            object expected = 5.0;
             object actual;
-            target.Content = expected;
             actual = target.Content;
             Assert.AreEqual(expected, actual);
         }

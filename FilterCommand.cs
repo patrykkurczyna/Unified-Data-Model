@@ -26,7 +26,7 @@ namespace UDM
                 int z = 0;
                 foreach (int index in invalidRows)
                 {
-                    newColumn.Cells.RemoveAt(index-z);
+                    if ((index-z)<newColumn.Cells.Count) newColumn.Cells.RemoveAt(index-z);
                     z++;
                 }
                 newTable.AddColumn(newColumn);

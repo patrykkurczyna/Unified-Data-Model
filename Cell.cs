@@ -30,6 +30,11 @@ namespace UDM
                 int i = (int)content;
                 this._content = (double)i;
             }
+            else if (content is Int64)
+            {
+                Int64 i = (Int64)content;
+                this._content = Convert.ToDouble(i);
+            }
             else
                 this._content = content;
         }
