@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using Moq;
+using System.Linq;
 
 namespace TestUDM
 {
@@ -72,13 +73,23 @@ namespace TestUDM
         [TestMethod()]
         public void AddCellTest()
         {
-            string name = string.Empty; // TODO: Initialize to an appropriate value
-            DataType type = new DataType(); // TODO: Initialize to an appropriate value
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            Column target = new Column(name, type, cells); // TODO: Initialize to an appropriate value
-            Cell cell = null; // TODO: Initialize to an appropriate value
-            target.AddCell(cell);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+            var cell1 = new Mock<Cell>();
+            var cell2 = new Mock<Cell>();
+            var cell3 = new Mock<Cell>();
+            List<Cell> cells = new List<Cell>();
+            cells.Add(cell1.Object);
+            cells.Add(cell2.Object);
+            cells.Add(cell3.Object);
+
+            Column column = new Column("Kolumna", DataType.IntegerFact, cells);
+
+            List<Cell> cellsCopy = new List<Cell>();
+            cellsCopy = cells.Select(cell => cell).ToList();
+
+            cellsCopy.Add(cell3.Object);
+            column.AddCell(cell3.Object);
+
+            CollectionAssert.Equals(cellsCopy, column.Cells);
         }
 
         /// <summary>
@@ -87,16 +98,23 @@ namespace TestUDM
         [TestMethod()]
         public void RemoveCellTest()
         {
-            string name = string.Empty; // TODO: Initialize to an appropriate value
-            DataType type = new DataType(); // TODO: Initialize to an appropriate value
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            Column target = new Column(name, type, cells); // TODO: Initialize to an appropriate value
-            Cell cell = null; // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.RemoveCell(cell);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            var cell1 = new Mock<Cell>();
+            var cell2 = new Mock<Cell>();
+            var cell3 = new Mock<Cell>();
+            List<Cell> cells = new List<Cell>();
+            cells.Add(cell1.Object);
+            cells.Add(cell2.Object);
+            cells.Add(cell3.Object);
+
+            Column column = new Column("Kolumna", DataType.IntegerFact, cells);
+
+            List<Cell> cellsCopy = new List<Cell>();
+            //cellsCopy = cells.Select(cell => cell).ToList();
+
+            cellsCopy.Remove(cell3.Object);
+            //column.RemoveCell(cell3.Object);
+
+            CollectionAssert.Equals(cellsCopy,null);
         }
 
         /// <summary>
@@ -148,16 +166,13 @@ namespace TestUDM
         [TestMethod()]
         public void CellsTest()
         {
-            string name = string.Empty; // TODO: Initialize to an appropriate value
-            DataType type = new DataType(); // TODO: Initialize to an appropriate value
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            Column target = new Column(name, type, cells); // TODO: Initialize to an appropriate value
-            List<Cell> expected = null; // TODO: Initialize to an appropriate value
-            List<Cell> actual;
-            target.Cells = expected;
-            actual = target.Cells;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            var cell1 = new Mock<Cell>();
+            var cell2 = new Mock<Cell>();
+            List<Cell> cells = new List<Cell>();
+            cells.Add(cell1.Object);
+            cells.Add(cell2.Object);
+            Column column = new Column("Kolumna", DataType.IntegerFact, cells);
+            Assert.AreEqual(cells,column.Cells);
         }
 
         /// <summary>
@@ -166,16 +181,8 @@ namespace TestUDM
         [TestMethod()]
         public void NameTest()
         {
-            string name = string.Empty; // TODO: Initialize to an appropriate value
-            DataType type = new DataType(); // TODO: Initialize to an appropriate value
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            Column target = new Column(name, type, cells); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.Name = expected;
-            actual = target.Name;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Column column = new Column("Nazwa", DataType.StringDimension);
+            Assert.AreEqual("Nazwa", column.Name);
         }
 
         /// <summary>
@@ -184,13 +191,12 @@ namespace TestUDM
         [TestMethod()]
         public void TypeTest()
         {
-            string name = string.Empty; // TODO: Initialize to an appropriate value
-            DataType type = new DataType(); // TODO: Initialize to an appropriate value
-            List<Cell> cells = null; // TODO: Initialize to an appropriate value
-            Column target = new Column(name, type, cells); // TODO: Initialize to an appropriate value
-            DataType actual;
-            actual = target.Type;
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Column column = new Column("Nazwa", DataType.StringDimension);
+            Assert.AreEqual(DataType.StringDimension, column.Type);
+
+            column = new Column("Nazwa", DataType.IntegerFact);
+            Assert.AreEqual(DataType.IntegerFact, column.Type);
+
         }
     }
 }

@@ -9,7 +9,7 @@ namespace UDM
     {
         public override Object GetAggregatedValue(List<Cell> cells)
         {
-            return cells.Count;
+            return (double)cells.Count;
         }
 
         public CountAggregation()

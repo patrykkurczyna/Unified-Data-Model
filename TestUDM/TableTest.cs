@@ -2,6 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using Moq;
+using System.Linq;
 
 namespace TestUDM
 {
@@ -64,33 +66,28 @@ namespace TestUDM
         //
         #endregion
 
-
-        /// <summary>
-        ///A test for Table Constructor
-        ///</summary>
-        [TestMethod()]
-        public void TableConstructorTest()
-        {
-            string _name = string.Empty; // TODO: Initialize to an appropriate value
-            Table previous = null; // TODO: Initialize to an appropriate value
-            List<Column> columns = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, previous, columns);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
         /// <summary>
         ///A test for AddColumn
         ///</summary>
         [TestMethod()]
         public void AddColumnTest()
         {
-            string _name = string.Empty; // TODO: Initialize to an appropriate value
-            Table previous = null; // TODO: Initialize to an appropriate value
-            List<Column> columns = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
-            Column column = null; // TODO: Initialize to an appropriate value
-            target.AddColumn(column);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+            var column1 = new Mock<Column>();
+            var column2 = new Mock<Column>();
+            var column3 = new Mock<Column>();
+            List<Column> columns = new List<Column>();
+            columns.Add(column1.Object);
+            columns.Add(column2.Object);
+
+            Table table = new Table("Tabela", null, columns);
+
+            List<Column> columnsCopy = new List<Column>();
+            columnsCopy = columns.Select(column => column).ToList();
+
+            columnsCopy.Add(column3.Object);
+            table.AddColumn(column3.Object);
+
+            CollectionAssert.Equals(columnsCopy, table.Columns);
         }
 
         /// <summary>
@@ -134,16 +131,23 @@ namespace TestUDM
         [TestMethod()]
         public void RemoveColumnTest()
         {
-            string _name = string.Empty; // TODO: Initialize to an appropriate value
-            Table previous = null; // TODO: Initialize to an appropriate value
-            List<Column> columns = null; // TODO: Initialize to an appropriate value
-            Table target = new Table(_name, previous, columns); // TODO: Initialize to an appropriate value
-            Column column = null; // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.RemoveColumn(column);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            var column1 = new Mock<Column>();
+            var column2 = new Mock<Column>();
+            var column3 = new Mock<Column>();
+            List<Column> columns = new List<Column>();
+            columns.Add(column1.Object);
+            columns.Add(column2.Object);
+            columns.Add(column3.Object);
+
+            Table table = new Table("Tabela", null, columns);
+
+            List<Column> columnsCopy = null;// new List<Column>();
+            //columnsCopy = columns.Select(column => column).ToList();
+
+            //columnsCopy.Remove(column3.Object);
+            //table.AddColumn(column3.Object);
+
+            CollectionAssert.Equals(columnsCopy, table.Columns);
         }
 
         /// <summary>
